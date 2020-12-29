@@ -1,19 +1,19 @@
 %clearfix {
-    &:after {
-      display: block;
-      content: "";
-      clear: both;
-    }
+  &:after {
+    display: block;
+    content: "";
+    clear: both;
   }
-  
-  @mixin make-col($cols, $gap) {
-    display: flex;
-    flex-wrap: wrap;
-    > *:nth-child(1n + 0) {
-      width: calc(calc(100% - #{($cols - 1) * $gap}) / #{$cols});
-      margin: 0 $gap $gap 0;
-    }
-    > *:nth-child(#{$cols}n + 0) {
-      margin-right: 0;
-    }
+}
+
+@mixin make-col($cols, $gap) {
+  display: flex;
+  flex-wrap: wrap;
+  > *:nth-child(1n + 0) {
+    width: calc(calc(100% - #{($cols - 1) * $gap}) / #{$cols});
+    margin: 0 $gap $gap 0;
   }
+  > *:nth-child(#{$cols}n + 0) {
+    margin-right: 0;
+  }
+}
