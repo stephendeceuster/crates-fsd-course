@@ -3,3 +3,7 @@
 @use './base/variables' as *;
 @use './base/mixins' as *;
 @import "./../../icons/style.css";
+
+body {
+  background-color: $wit;
+}
