@@ -1,0 +1,29 @@
+{
+  "name": "crates",
+  "version": "1.0.0",
+  "description": "records collection webapp",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run dev",
+    "dev": "npm-run-all --parallel sass-dev server-dev",
+    "sass-dev": "sass ./assets/src/style.scss ./assets/css/style.css --watch",
+    "server-dev": "live-server",
+    "build": "npm-run-all --serial clean sass-prod",
+    "clean": "rm -r ./assets/css/ ",
+    "sass-prod": "sass ./assets/src/style.scss ./assets/css/style.css --no-source-map --style=compressed",
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephendeceuster/Crates.git"
+  },
+  "author": "Roel Vereycken & Stephen De Ceuster",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stephendeceuster/Crates/issues"
+  },
+  "homepage": "https://github.com/stephendeceuster/Crates#readme"
+}
