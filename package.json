@@ -14,7 +14,7 @@
     "server-dev": "live-server",
     "build": "npm-run-all --serial clean sass-prod",
     "clean": "rm -r ./assets/css/ ",
-    "sass-prod": "sass ./assets/src/style.scss ./assets/css/style.css --no-source-map --style=compressed",
+    "sass-prod": "sass ./assets/src/style.scss ./assets/css/style.css --no-source-map --style=compressed"
   },
   "repository": {
     "type": "git",
