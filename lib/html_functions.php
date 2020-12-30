@@ -5,16 +5,6 @@ function PrintHead()
     print $head;
 }
 
-function PrintJumbo( $title = "", $subtitle = "" )
-{
-    $jumbo = file_get_contents("templates/jumbo.html");
-
-    $jumbo = str_replace( "@jumbo_title@", $title, $jumbo );
-    $jumbo = str_replace( "@jumbo_subtitle@", $subtitle, $jumbo );
-
-    print $jumbo;
-}
-
 function MergeViewWithData( $template, $data )
 {
     $returnvalue = "";
@@ -25,7 +15,7 @@ function MergeViewWithData( $template, $data )
 
         foreach( array_keys($row) as $field )  //eerst "img_id", dan "img_title", ...
         {
-            $output = str_replace( "@$field@", $row["$field"], $output );
+            $output = str_replace( "%$field%", $row["$field"], $output );
         }
 
         $returnvalue .= $output;

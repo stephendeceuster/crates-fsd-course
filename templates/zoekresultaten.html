@@ -6,5 +6,35 @@
 </head>
 <body>
 
+<header>
+    <img src="logo.svg" alt="">
+    <nav>
+        <ul>
+            <li><a href="#">Vind platen</a></li>
+            <li><a href="#">Mijn collectie</a></li>
+            <li><a href="#">Mijn wishlist</a></li>
+            <li><a href="#">Mijn vrienden</a></li>
+            <li><a href="#">Mijn profiel</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <form action="result.php" method="post">
+        <input type="text" name="search" placeholder="Zoek een album">
+        <button type="submit">
+            <!-- SEARCH PICTO -->
+        </button>
+    </form>
+    <h1>"Resultaat: %ZOEKTERM%"</h1>
+    <div class="sort">
+        <label for="sorting">Sorteer op : </label>
+        <select name="sorting" id="sorting">
+            <option value="">albumnaam</option>
+            <option value="">artiestnaam</option>
+            <option value="">populariteit</option>
+            <option value="">quotering</option>
+        </select>
+    </div>
+
 </body>
 </html>
