@@ -1,7 +1,7 @@
 <?php
 // Checkt of er errors zijn
-error_reporting( E_ALL );
-ini_set( 'display_errors', 1 );
+//error_reporting( E_ALL );
+//ini_set( 'display_errors', 1 );
 
 // Haalt de formules binnen
 require_once "lib/autoload.php";
