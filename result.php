@@ -17,14 +17,13 @@ $searchbar = "./templates/zoekresultaten.html";
 
 str_replace("%ZOEKTERM%", "iets", $searchbar);
 
-echo $searchbar;
-
 // Haalt de albumresultaten uit de db,
 // alles dus als er geen zoekopdracht wordt uitgevoerd
 
 //get data
-$data = GetData("select alb_naam, art_naam from album
-                     inner join artist on alb_art_id = art_id where art_naam like '%$result%'");
+$data = GetData("select * from album
+                     inner join artist on alb_art_id = art_id 
+                     where art_naam like '%$result%' or alb_naam like '%$result%'");
 
 //get template
 $template = file_get_contents("templates/zoekresultaten-kolom.html");
