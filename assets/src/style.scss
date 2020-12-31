@@ -60,9 +60,10 @@ form.main-search {
     color: $clr1;
     font-size: 1.02rem;
     outline: none;
+    background-color: $clr4;
     &::placeholder {
       font-style: italic;
-      color: $grey;
+      color: $clr3;
     }
   }
   button.btn-search {
@@ -108,7 +109,7 @@ div.search-results {
     .album-title {
       font-size: 1.25rem;
       font-weight: 700;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
       padding-left: 0.25rem;
     }
     .album-artist {

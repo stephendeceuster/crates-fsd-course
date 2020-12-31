@@ -180,12 +180,12 @@ main {
   padding: 2rem;
 }
 
-form.main--search {
+form.main-search {
   width: 100%;
   display: flex;
   margin-bottom: 2rem;
 }
-form.main--search input {
+form.main-search input {
   width: calc(100% - 3rem);
   height: 2.5rem;
   margin-right: 0.5rem;
@@ -195,12 +195,13 @@ form.main--search input {
   color: #112627;
   font-size: 1.02rem;
   outline: none;
+  background-color: #D9E1E2;
 }
-form.main--search input::placeholder {
+form.main-search input::placeholder {
   font-style: italic;
-  color: #707070;
+  color: #256B71;
 }
-form.main--search button.btn-search {
+form.main-search button.btn-search {
   width: 2.5rem;
   height: 2.5rem;
   display: flex;
@@ -212,7 +213,7 @@ form.main--search button.btn-search {
   border-radius: 2px;
   font-size: 2rem;
 }
-form.main--search button.btn-search:hover {
+form.main-search button.btn-search:hover {
   background-color: #256B71;
 }
 
@@ -251,7 +252,7 @@ div.search-results .album a img {
 div.search-results .album a .album-title {
   font-size: 1.25rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
   padding-left: 0.25rem;
 }
 div.search-results .album a .album-artist {
