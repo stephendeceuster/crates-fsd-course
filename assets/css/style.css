@@ -240,14 +240,15 @@ div.search-results > *:nth-child(3n+0) {
 }
 div.search-results .album a {
   text-decoration: none;
-  color: inherit;
+  color: #20484B;
 }
 div.search-results .album a:hover {
-  color: #20484B;
+  color: #256B71;
 }
 div.search-results .album a img {
   margin-bottom: 0.5rem;
   border-radius: 2px;
+  box-shadow: 0 1px 2px #112627;
 }
 div.search-results .album a .album-title {
   font-size: 1.25rem;

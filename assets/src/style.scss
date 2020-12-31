@@ -98,13 +98,14 @@ div.search-results {
   @include make-col(3, 2rem);
   .album a {
     text-decoration: none;
-    color: inherit;
+    color: $clr2;
     &:hover {
-      color: $clr2;
+      color: $clr3;
     }
     img {
       margin-bottom: 0.5rem;
       border-radius: 2px;
+      box-shadow: 0 1px 2px $clr1;
     }
     .album-title {
       font-size: 1.25rem;
