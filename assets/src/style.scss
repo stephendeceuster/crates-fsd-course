@@ -5,5 +5,117 @@
 @import "./../../icons/style.css";
 
 body {
-  background-color: $wit;
+  background-color: $white;
+  font-family: $sourcesans;
+  font-size: 1.05rem;
+  display: flex;
+}
+
+// Header
+header {
+  background-color: $clr4;
+  width: 15rem;
+  padding: 2rem;
+  .logo {
+    width: 8rem;
+    margin-bottom: 2rem;
+  }
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    li {
+      margin-bottom: 1rem;
+      margin-left: -0.25rem;
+      a {
+        font-weight: 700;
+        text-decoration: none;
+        padding: 0.5rem 0.25rem;
+        color: $clr1;
+        &:hover {
+          color: $clr3;
+        }
+      }
+    }
+  }
+}
+
+// main
+main {
+  width: calc(100% - 15rem);
+  padding: 2rem;
+}
+
+// search
+form.main--search {
+  width: 100%;
+  display: flex;
+  margin-bottom: 2rem;
+  input {
+    width: calc(100% - 3rem);
+    height: 2.5rem;
+    margin-right: 0.5rem;
+    border: 1px solid $clr2;
+    border-radius: 2px;
+    padding-left: 1rem;
+    color: $clr1;
+    font-size: 1.02rem;
+    outline: none;
+    &::placeholder {
+      font-style: italic;
+      color: $grey;
+    }
+  }
+  button.btn-search {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $clr3;
+    color: $white;
+    border: 1px solid $clr2;
+    border-radius: 2px;
+    font-size: 2rem;
+    &:hover {
+      background-color: $clr3;
+    }
+  }
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: $clr2;
+  margin-bottom: 2rem;
+  width: 80%;
+}
+
+// search results
+div.search-results {
+  display: flex;
+  flex-wrap: wrap;
+  @include make-col(3, 2rem);
+  .album a {
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+      color: $clr2;
+    }
+    img {
+      margin-bottom: 0.5rem;
+      border-radius: 2px;
+    }
+    .album-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      padding-left: 0.25rem;
+    }
+    .album-artist {
+      font-style: italic;
+      font-size: 1.125rem;
+      margin-bottom: 1.5rem;
+      padding-left: 0.25rem;
+    }
+  }
 }
