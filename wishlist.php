@@ -24,7 +24,7 @@ str_replace("%ZOEKTERM%", "iets", $searchbar);
 $query = "select inh_use_id, alb_naam, alb_img, art_naam,  inh_lis_id, alb_id, art_id from user_album ";
 $query .= "left join album on inh_alb_id = alb_id ";
 $query .= "left join artist on alb_art_id = art_id ";
-$query .= "where inh_use_id = 1 and inh_lis_id = 1";
+$query .= "where inh_use_id = 1 and inh_lis_id = 2";
 
 //get data
 $data = GetData($query);
