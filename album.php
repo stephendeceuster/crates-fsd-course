@@ -12,8 +12,6 @@ $query .= "from album left join artist on alb_art_id = art_id ";
 $query .= "left join genre on alb_gen_id = gen_id ";
 $query .= "where alb_id = " . $_GET['alb_id'] ;
 
-
-
 $data= GetData($query);
 
 //get template
@@ -27,7 +25,6 @@ $query2 = "select alb_id, son_title from songs ";
 $query2 .= "left join album on son_alb_id = alb_id ";
 $query2 .= "where alb_id = " . $_GET['alb_id'];
 
-
 $data2= GetData($query2);
 
 //get template
@@ -37,10 +34,13 @@ $template2 = file_get_contents("templates/album_songs.html");
 $output2 = MergeViewWithData($template2, $data2);
 print $output2;
 
+$query3 = "select * from album ";
+$query3 .= "left join artist on alb_art_id = art_id ";
+$query3 .= "where art_id = " . $_GET['ID'] ;
+$query3 .= " and alb_id  != " . $_GET['alb_id'];
+
 //get data
-$data3 = GetData("select * from album
-                     left join artist on alb_art_id = art_id 
-                     where art_id = " . $_GET['ID']);
+$data3 = GetData($query3);
 
 //get template
 $template3 = file_get_contents("templates/album_andere_albums.html");

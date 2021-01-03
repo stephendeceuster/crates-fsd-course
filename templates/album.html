@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>%art_naam% - %alb_naam%</title>
+
 </head>
 <body>
+<header>
+    <img src="./assets/img/crates-logo.svg" alt="" class="logo">
+    <nav>
+        <ul>
+            <li><a href="result.php">Vind platen</a></li>
+            <li><a href="collection.php">Mijn collectie</a></li>
+            <li><a href="wishlist.php">Mijn wishlist</a></li>
+            <li><a href="#">Mijn vrienden</a></li>
+            <li><a href="#">Mijn profiel</a></li>
+        </ul>
+    </nav>
+</header>
 <div class="album">
     <a href="#"><img src="./assets/uploads/%alb_img%" alt="" class="album-cover"></a>
     <a href="#">
@@ -18,14 +31,15 @@
     </a>
 </div>
 
-<button type="submit" class="btn-search">
+<form action="" method="post">
+<button type="submit" class="btn-search" name="collection" value="1">
     <p>Add To Collection</p>
 </button>
 
 <button type="submit" class="btn-search">
     <p>Add To Wishlist</p>
 </button>
-
+</form>
 <h2>Songs</h2>
 
 
