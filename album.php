@@ -7,12 +7,12 @@ require_once "lib/autoload.php";
 
 if ( ! is_numeric( $_GET['alb_id']) ) die("Ongeldig argument " . $_GET['img_id'] . " opgegeven");
 
-$query = "select alb_naam, art_naam, gen_naam, alb_img ";
+$query = "select alb_id, alb_naam, art_naam, art_id, gen_naam, alb_img ";
 $query .= "from album left join artist on alb_art_id = art_id ";
 $query .= "left join genre on alb_gen_id = gen_id ";
 $query .= "where alb_id = " . $_GET['alb_id'] ;
 
-$data= GetData($query);
+$data = GetData($query);
 
 //get template
 $template = file_get_contents("templates/album.html");
@@ -20,6 +20,43 @@ $template = file_get_contents("templates/album.html");
 //merge
 $output = MergeViewWithData($template, $data);
 print $output;
+
+//-------------------------------------------------------------
+// Hier voeg ik de template van de add to collection button toe
+//-------------------------------------------------------------
+
+$queryCollection = "select art_id, alb_id, inh_id from album ";
+$queryCollection .= "left join artist on art_id = alb_art_id ";
+$queryCollection .= "left join user_album on alb_id = inh_alb_id ";
+$queryCollection .= "where alb_id = " . $_GET['alb_id'];
+
+$dataCollection= GetData($queryCollection);
+
+$dataCollection[0]["csrf_token"] = GenerateCSRF( "album.php" );
+
+//get template
+$templateCollection = file_get_contents("templates/album_add_to_collection.html");
+
+//merge
+$outputCollection = MergeViewWithData($templateCollection, $dataCollection);
+print $outputCollection;
+
+
+//-------------------------------------------------------------
+// Hier voeg ik de template van de add to wishlist button toe
+//-------------------------------------------------------------
+
+//get template
+$templateWishlist = file_get_contents("templates/album_add_to_wishlist.html");
+
+//merge
+$outputWishlist = MergeViewWithData($templateWishlist, $dataCollection);
+print $outputWishlist;
+
+
+//--------------------------------------------------------------
+// Songs
+//--------------------------------------------------------------
 
 $query2 = "select alb_id, son_title from songs ";
 $query2 .= "left join album on son_alb_id = alb_id ";
@@ -33,6 +70,10 @@ $template2 = file_get_contents("templates/album_songs.html");
 //merge
 $output2 = MergeViewWithData($template2, $data2);
 print $output2;
+
+//-------------------------------------------------------------
+// Andere albums van de artiest
+//-------------------------------------------------------------
 
 $query3 = "select * from album ";
 $query3 .= "left join artist on alb_art_id = art_id ";
