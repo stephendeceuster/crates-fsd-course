@@ -5,8 +5,12 @@ ini_set( 'display_errors', 1 );
 
 // load library
 require_once './lib/autoload.php';
-?>
 
-//form
+if (isset($_SESSION['message']) && $_SESSION['message']) {
+    printf('<b>%s</b>', $_SESSION['message']);
+    unset($_SESSION['message']);
+}
 
-// Hier komt update formulier om platen toe te voegen/wijzen in db
+$output = file_get_contents('templates/update-db.html');
+
+print $output;
