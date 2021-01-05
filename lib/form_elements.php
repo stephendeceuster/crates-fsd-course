@@ -21,3 +21,13 @@ function MakeSelect( $fkey, $value, $sql )
     return $select;
 }
 
+function MakeDatalistArtist () {
+    $datalist = "<datalist id='artists'>";
+
+    $data = GetData("SELECT art_naam FROM artists");
+    foreach ($data as $row) {
+        $datalist .= "<option value=" . row[0] . ">";
+    }
+    return $datalist;
+}
+

@@ -1,13 +1,39 @@
 <!-- Hier komt html template voor update formulier -->
-<form id="updateform" name="updateform" action="upload.php" method="POST" enctype="multipart/form-data">
+<form id="updateform" name="updateform" action="./lib/upload.php" method="POST" enctype="multipart/form-data">
+
+    <!-- meta info -->
+    <!-- <input type="hidden" id="table" name="table" value="images"> -->
+    <!-- <input type="hidden" id="pkey" name="pkey" value="img_id"> -->
+    <!-- <input type="hidden" id="afterinsert" name="afterinsert" value="steden.php"> -->
+    <!-- <input type="hidden" id="afterupdate" name="afterupdate" value="steden.php"> -->
+    <!-- end meta info -->
+
     <!--security-->
     <input type="hidden" name="csrf" value="@csrf_token@">
     <p><small>@csrf_token@</small></p>
     <!--end security-->
 
-    <div class="form-group row">
+    <div class="form-group">
         <label for="alb_naam">Albumnaam</label>
-        <input type="text" class="form-control-plaintext" id="alb_naam" name="%alb_naam%" value="%alb_naam%">
+        <input type="text" id="alb_naam" name="alb_naam" value="%alb_naam%">
+        %alb_naam_error%
+    </div>
+
+    <div class="form-group">
+        <label for="art_naam">Artiest</label>
+        <input type="text" id="art_naam" name="art_naam" value="%art_naam%" list="artists">
+        %datalist%
+        %art_naam_error%
+    </div>
+
+    <div class="form-group">
+        <label for="alb_naam">Artiest</label>
+        <input type="file" id="alb_naam" name="alb_naam">
+        %alb_img_error%
+    </div>
+
+    <div>
+        <input type="submit" value="Maak album aan">
     </div>
 
 </form>

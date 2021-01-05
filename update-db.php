@@ -5,8 +5,7 @@ ini_set( 'display_errors', 1 );
 
 // load library
 require_once './lib/autoload.php';
-?>
 
-//form
+$output = file_get_contents('templates/update-db.html');
 
-// Hier komt update formulier om platen toe te voegen/wijzen in db
+print $output;
