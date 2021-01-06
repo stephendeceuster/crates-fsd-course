@@ -22,7 +22,7 @@
         </nav>
     </header>
     <main>
-        <form action="result.php" method="post" class="main-search">
+        <form action="result.php" method="get" class="main-search">
             <input type="text" name="search" placeholder="Zoek een album">
             <button type="submit" class="btn-search">
                 <svg class="icon icon-search">
@@ -41,3 +41,6 @@
             </select>
         </div>
         <div class="search-results">
+            %searchresult%
+        </div>
+    </main>

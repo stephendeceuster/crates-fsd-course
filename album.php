@@ -4,6 +4,7 @@ ini_set( 'display_errors', 1 );
 
 require_once "lib/autoload.php";
 //require_once "./templates/zoekresultaten.html";
+var_dump($_GET['inh_lis_id']);
 
 if ( ! is_numeric( $_GET['alb_id']) ) die("Ongeldig argument " . $_GET['alb_id'] . " opgegeven");
 
@@ -26,11 +27,32 @@ print $output;
 // toe als het album nog niet toegevoegd is aan de collectie
 //-------------------------------------------------------------
 
-$queryCollection = "select art_id, alb_id, inh_id from album ";
-$queryCollection .= "left join artist on art_id = alb_art_id ";
-$queryCollection .= "left join user_album on alb_id = inh_alb_id ";
-$queryCollection .= "where alb_id = " . $_GET['alb_id'];
+//$queryCollection = "select art_id, alb_id, inh_id from album ";
+//$queryCollection .= "left join artist on art_id = alb_art_id ";
+//$queryCollection .= "left join user_album on alb_id = inh_alb_id ";
+//$queryCollection .= "where alb_id = " . $_GET['alb_id'];
 
+$queryCollection = 'SELECT inh_lis_id FROM user_album WHERE inh_alb_id = ' . $_GET['alb_id'];
+//$result = uitkomst query;
+/*
+if (result === 1) {
+   //=>tekst 'in collectie';
+} else {
+    //=> knop 'toevoegen collectie';
+    if (result === 2) {
+        //=> teskt 'in wishlist';
+    } else {
+        //=> knop 'toevoegen wishlist';
+    }
+}
+
+//if result === 0 {
+    $query = 'INSERT INTO user_album (inh_use_id, inh_alb_id, inh_lis_id)
+                VALUES ($user_id, $_GET['alb_id'], 1 of 2)'
+} else {
+    $query = 'UPDATE ...'
+}
+*/
 $dataCollection = GetData($queryCollection);
 
 $dataCollection[0]["csrf_token"] = GenerateCSRF("album.php");
