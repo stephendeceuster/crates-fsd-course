@@ -5,7 +5,7 @@ ini_set( 'display_errors', 1 );
 require_once "lib/autoload.php";
 //require_once "./templates/zoekresultaten.html";
 
-if ( ! is_numeric( $_GET['alb_id']) ) die("Ongeldig argument " . $_GET['img_id'] . " opgegeven");
+if ( ! is_numeric( $_GET['alb_id']) ) die("Ongeldig argument " . $_GET['alb_id'] . " opgegeven");
 
 $query = "select alb_id, alb_naam, art_naam, art_id, gen_naam, alb_img ";
 $query .= "from album left join artist on alb_art_id = art_id ";
@@ -22,7 +22,8 @@ $output = MergeViewWithData($template, $data);
 print $output;
 
 //-------------------------------------------------------------
-// Hier voeg ik de template van de add to collection button toe
+// Hier voeg ik de template van de add to collection button
+// toe als het album nog niet toegevoegd is aan de collectie
 //-------------------------------------------------------------
 
 $queryCollection = "select art_id, alb_id, inh_id from album ";
@@ -30,29 +31,36 @@ $queryCollection .= "left join artist on art_id = alb_art_id ";
 $queryCollection .= "left join user_album on alb_id = inh_alb_id ";
 $queryCollection .= "where alb_id = " . $_GET['alb_id'];
 
-$dataCollection= GetData($queryCollection);
+$dataCollection = GetData($queryCollection);
 
-$dataCollection[0]["csrf_token"] = GenerateCSRF( "album.php" );
+$dataCollection[0]["csrf_token"] = GenerateCSRF("album.php");
+
+if ($_GET["inh_lis_id"] != 1) {
 
 //get template
-$templateCollection = file_get_contents("templates/album_add_to_collection.html");
+    $templateCollection = file_get_contents("templates/album_add_to_collection.html");
 
 //merge
-$outputCollection = MergeViewWithData($templateCollection, $dataCollection);
-print $outputCollection;
+    $outputCollection = MergeViewWithData($templateCollection, $dataCollection);
+    print $outputCollection;
 
+}
 
 //-------------------------------------------------------------
 // Hier voeg ik de template van de add to wishlist button toe
+// als het album nog niet in de wishlist of de collectie staat
 //-------------------------------------------------------------
 
+if ($_GET["inh_lis_id"] == 0) {
+
 //get template
-$templateWishlist = file_get_contents("templates/album_add_to_wishlist.html");
+    $templateWishlist = file_get_contents("templates/album_add_to_wishlist.html");
 
 //merge
-$outputWishlist = MergeViewWithData($templateWishlist, $dataCollection);
-print $outputWishlist;
+    $outputWishlist = MergeViewWithData($templateWishlist, $dataCollection);
+    print $outputWishlist;
 
+}
 
 //--------------------------------------------------------------
 // Songs

@@ -23,6 +23,7 @@ str_replace("%ZOEKTERM%", "iets", $searchbar);
 //get data
 $data = GetData("select * from album
                      left join artist on alb_art_id = art_id 
+                     left join user_album on alb_id = inh_alb_id
                      where art_naam like '%$result%' or alb_naam like '%$result%'");
 
 //get template
