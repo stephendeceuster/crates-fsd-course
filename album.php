@@ -36,13 +36,15 @@ if ($result[0]['0'] == 1) {
     $html = str_replace("%button-collectie%", "<h2>In Collectie</h2>", $html);
     $html = str_replace("%button-wishlist%", "", $html);
 } elseif ($result[0]['0'] == 0) {
-    //=> knop 'toevoegen wishlist'
-    $template = file_get_contents("templates/album_add_to_wishlist.html");
+    //=> album krijgt 2 knoppen
+    $template = file_get_contents("templates/album_add_to_collection.html");
     $output = str_replace("%alb_id%", $_GET['alb_id'], $template);
     $html = str_replace("%button-collectie%", $output, $html);
+    $template = file_get_contents("templates/album_add_to_wishlist.html");
+    $output = str_replace("%alb_id%", $_GET['alb_id'], $template);
     $html = str_replace("%button-wishlist%", $output, $html);
 } else {
-    //=> album krijgt 2 knoppen
+    //=> album krijgt 1 knop en tekst 'in wishlist'
     $template = file_get_contents("templates/album_add_to_collection.html");
     $output = str_replace("%alb_id%", $_GET['alb_id'], $template);
     $html = str_replace("%button-wishlist%", "<h2>In Wishlist</h2>", $html);
