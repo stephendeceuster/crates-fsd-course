@@ -31,35 +31,40 @@ $html = MergeViewWithData($template, $data);
 $queryLisID = 'SELECT inh_lis_id FROM user_album WHERE inh_alb_id = ' . $_GET['alb_id'];
 $result = GetData($queryLisID);
 
+$CSRF = GenerateCSRF("album.php");
+
 if ($result[0]['0'] == 1) {
    //=>tekst 'in collectie';
     $html = str_replace("%button-collectie%", "<h2>In Collectie</h2>", $html);
     $html = str_replace("%button-wishlist%", "", $html);
 } elseif ($result[0]['0'] == 0) {
     //=> album krijgt 2 knoppen
+    // Neem de html-template
     $template = file_get_contents("templates/album_add_to_collection.html");
+    // Vervang alb_id door juist getal
     $output = str_replace("%alb_id%", $_GET['alb_id'], $template);
+    // Stuur art_id mee voor redirecting
+    $output = str_replace("%art_id%", $_GET['art_id'], $output);
+    // Voeg csrf token toe
+    $output = str_replace("%csrf_token%", $CSRF , $output);
+    // vervang de tag in volledige template
     $html = str_replace("%button-collectie%", $output, $html);
+
     $template = file_get_contents("templates/album_add_to_wishlist.html");
     $output = str_replace("%alb_id%", $_GET['alb_id'], $template);
+    $output = str_replace("%art_id%", $_GET['art_id'], $output);
+    $output = str_replace("%csrf_token%", $CSRF , $output);
     $html = str_replace("%button-wishlist%", $output, $html);
 } else {
     //=> album krijgt 1 knop en tekst 'in wishlist'
     $template = file_get_contents("templates/album_add_to_collection.html");
     $output = str_replace("%alb_id%", $_GET['alb_id'], $template);
+    $output = str_replace("%art_id%", $_GET['art_id'], $output);
+    $output = str_replace("%csrf_token%", $CSRF , $output);
     $html = str_replace("%button-wishlist%", "<h2>In Wishlist</h2>", $html);
     $html = str_replace("%button-collectie%", $output, $html);
 }
 
-/*
-//if result === 0 {
-    $query = 'INSERT INTO user_album (inh_use_id, inh_alb_id, inh_lis_id)
-                VALUES ($user_id, $_GET['alb_id'], 1 of 2)'
-} else {
-    $query = 'UPDATE ...'
-}
-
-*/
 //--------------------------------------------------------------
 // Songs
 //--------------------------------------------------------------
@@ -81,7 +86,7 @@ $html = str_replace("%songs%", $output2, $html);
 
 $query3 = "select * from album ";
 $query3 .= "left join artist on alb_art_id = art_id ";
-$query3 .= "where art_id = " . $_GET['ID'] ;
+$query3 .= "where art_id = " . $_GET['art_id'] ;
 $query3 .= " and alb_id  != " . $_GET['alb_id'];
 
 //get data

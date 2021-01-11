@@ -5,6 +5,10 @@ ini_set('display_errors', 1);
 
 require_once "autoload.php";
 
+//controle CSRF token
+if ( ! key_exists("csrf", $_POST)) die("Missing CSRF");
+if ( ! hash_equals( $_POST['csrf'], $_SESSION['lastest_csrf'] ) ) die("Problem with CSRF");
+
 $queryLisID = 'SELECT inh_lis_id FROM user_album WHERE inh_alb_id = ' . $_POST['inh_alb_id'];
 $result = GetData($queryLisID);
 
@@ -23,3 +27,5 @@ try {
 
 //define and execute query
 $result = $conn->query($query);
+
+header("Location: ../album.php?alb_id=" . $_POST["inh_alb_id"] . "&art_id=" . $_POST["art_id"]);
