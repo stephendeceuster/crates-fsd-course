@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-
-<body>
-    <div>
-        <img src=".assets/img/crates.svg" alt="Crates logo">
-        <form id="login" name="login" method="POST" action="xxx">
+<div class='login'>
+    <div class='inlog-form'>
+        <img class='logo' src="./assets/img/crates-logo.svg" alt="Crates logo">
+        <form id="login" name="login" method="POST" action="./lib/login.php">
+            <h2>Log in</h2>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="text" name="email" id="email">
@@ -22,7 +15,6 @@
                 <button type="submit">Inloggen</button>
             </div>
         </form>
+        <a href="registreer.php"><span>registreer je hier</span></a>
     </div>
-</body>
-
-</html>
+</div>
