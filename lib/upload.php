@@ -3,7 +3,7 @@
 // load library once
 require_once "autoload.php";
 
-
+var_dump($_POST);
 $message = ''; 
 
 //check if users comes from update-db form
@@ -12,21 +12,23 @@ if (!isset($_POST['uploadBtn']) && $_POST['uploadBtn'] != 'Maak album aan') {
 }
 
 // get artist from form & check if already in database.
-$art_naam = ucwords(strtolower($_POST['art_naam'])); // Naam moet nog verder opgekuisd worden
+$art_naam = htmlspecialchars(ucwords(strtolower($_POST['art_naam'])),  ENT_QUOTES); // Naam moet nog verder opgekuisd worden?
 $artsql = "SELECT art_id FROM artist WHERE art_naam LIKE '". $art_naam . "'";
 $data = GetData($artsql);
-var_dump($data);
 
 // if data is empty -> insert artist in db
 if (!$data) {
     $sql = "INSERT INTO artist (art_naam) VALUES ('" . $art_naam . "')";
     $result = ExecuteSQL( $sql );
     $art_id = ExecuteSQL( 'SELECT LAST_INSERT_ID()')[0]['art_id'];
-    var_dump($art_id);
 } else {
     $art_id = $data[0]['art_id'];
-    //print 'Artist with id = ' . $data[0]["art_id"] . ' is in db';
 }
+
+// get data from rest of form
+$albumnaam = $_POST['alb_naam'];
+
+
 
 
 if (isset($_FILES['alb_img']) && $_FILES['alb_img']['error'] === UPLOAD_ERR_OK)
