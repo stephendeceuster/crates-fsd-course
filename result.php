@@ -2,13 +2,14 @@
 // Checkt of er errors zijn
 // error_reporting( E_ALL );
 // ini_set( 'display_errors', 1 );
-
-$html = file_get_contents('./templates/head.html');
-$html = str_replace("%title%", search , $html);
-$html .= file_get_contents('./templates/header.html');
-
 // Haalt de formules binnen
 require_once "lib/autoload.php";
+
+
+$html = file_get_contents('./templates/head.html');
+$html = str_replace("%title%", "Search" , $html);
+$html .= file_get_contents('./templates/header.html');
+
 
 // Haalt zoekresultaat uit form
 $result = '';

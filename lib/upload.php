@@ -6,8 +6,7 @@ ini_set( 'display_errors', 1 );
 // load library once
 require_once "autoload.php";
 
-//var_dump($_POST);
-$message = ''; 
+ 
 
   if ( $_SERVER['REQUEST_METHOD'] == "POST" ) {
 
@@ -73,32 +72,30 @@ if (isset($_FILES['alb_img']) && $_FILES['alb_img']['error'] === UPLOAD_ERR_OK)
 
       if(move_uploaded_file($fileTmpPath, $dest_path)) 
       {
-        $message ='File is successfully uploaded.';
+        $_SESSION['message'] ='File is successfully uploaded.';
         $imgsql = "UPDATE album SET alb_img = '" . $newFileName . "' WHERE alb_id = " . $alb_id;
-        var_dump($imgsql);
         ExecuteSQL($imgsql);
       }
       else 
       {
-        $message = 'There was some error moving the file to upload directory. Please make sure the upload directory is writable by web server.';
+        $_SESSION['message'] = 'There was some error moving the file to upload directory. Please make sure the upload directory is writable by web server.';
       }
     }
     else
     {
-      $message = 'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions);
+      $_SESSION['message'] = 'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions);
     }
   }
   else
   {
-    $message = 'There is some error in the file upload. Please check the following error.<br>';
-    $message .= 'Error:' . $_FILES['alb_img']['error'];
+    $_SESSION['message'] = 'There is some error in the file upload. Please check the following error.<br>';
+    $_SESSION['message'] .= 'Error:' . $_FILES['alb_img']['error'];
   }
 
-$_SESSION['message'] = $message;
 $_SESSION['post'] = $_POST;
 
-print $message;
 
 // SEND USER TO NEW ALBUM PAGE ?
-header("Location: ./../album.php?alb_id=" . $alb_id . "&art_id=" . $art_id);
+$sendTo = "Location: ./../album.php?alb_id=" . $alb_id . "&art_id=" . $art_id;
+header($sendTo);
 }
