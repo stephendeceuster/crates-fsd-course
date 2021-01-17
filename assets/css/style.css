@@ -143,6 +143,7 @@ img {
 
 body {
   background-color: #ffffff;
+  color: #112627;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 1.05rem;
   display: flex;
@@ -282,14 +283,6 @@ form.main-search button.btn-search:hover {
   background-color: #256B71;
 }
 
-h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #20484B;
-  margin-bottom: 2rem;
-  width: 80%;
-}
-
 div.search-results {
   display: flex;
   flex-wrap: wrap;
@@ -326,6 +319,42 @@ div.search-results .album a .album-artist {
   font-size: 1.125rem;
   margin-bottom: 1.5rem;
   padding-left: 0.25rem;
+}
+
+div.login {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("./../img/records.jpg");
+  background-size: cover;
+  background-position: center;
+}
+div.login div.inlog-form {
+  background-color: rgba(255, 255, 255, 0.65);
+  padding: 3rem 2rem;
+  width: 90%;
+  max-width: 30rem;
+}
+div.login div.inlog-form .logo {
+  width: 90%;
+  max-width: 15rem;
+  margin: 0 auto 2rem;
+}
+div.login div.inlog-form form#login {
+  width: 100%;
+}
+div.login div.inlog-form form#login label,
+div.login div.inlog-form form#login input {
+  display: block;
+}
+div.login div.inlog-form form#login button {
+  width: 100%;
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  height: 3rem;
 }
 
 /*# sourceMappingURL=style.css.map */
