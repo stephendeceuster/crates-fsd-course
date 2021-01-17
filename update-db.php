@@ -11,11 +11,22 @@ if (isset($_SESSION['message']) && $_SESSION['message']) {
     unset($_SESSION['message']);
 }
 
-// create html output
-$output ='';
-$output .= file_get_contents('./templates/head.html');
-$output .= file_get_contents('./templates/header.html');
-$output .= file_get_contents('./templates/update-db.html');
-$output .= file_get_contents('./templates/footer.html');
+// Model : get data
+$title = 'Upload album';
 
-print $output;
+$CSRF = GenerateCSRF("update-db.php");
+
+// View : get update template
+$html ='';
+$html .= file_get_contents('./templates/head.html');
+$html .= file_get_contents('./templates/header.html');
+$html .= file_get_contents('./templates/update-db.html');
+$html .= file_get_contents('./templates/footer.html');
+
+
+// Controller : merge & print html
+$html = str_replace("%title%", $title, $html);
+$html = str_replace('%csrf_token%', $CSRF, $html);
+
+echo $html;
+
