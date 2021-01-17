@@ -1,19 +1,18 @@
 <?php
+// display errors
+error_reporting( E_ALL );
+ini_set( 'display_errors', 1 );
 
 // load library once
 require_once "autoload.php";
 
-var_dump($_POST);
+//var_dump($_POST);
 $message = ''; 
 
-uploadAlbum();
-
-function uploadAlbum() {
   if ( $_SERVER['REQUEST_METHOD'] == "POST" ) {
-//check if users comes from update-db form
-if (!isset($_POST['uploadBtn']) && $_POST['uploadBtn'] != 'Maak album aan') { 
-    // if not from form -> stop & send to other page.
-}
+
+// ADD CSRF !!!!!
+
 
 // get artist from form & check if already in database.
 $art_naam = htmlspecialchars(ucwords(strtolower($_POST['art_naam'])),  ENT_QUOTES); // Naam moet nog verder opgekuisd worden?
@@ -24,22 +23,24 @@ $data = GetData($artsql);
 if (!$data) {
     $sql = "INSERT INTO artist (art_naam) VALUES ('" . $art_naam . "')";
     $result = ExecuteSQL( $sql );
-    $art_id = ExecuteSQL( 'SELECT LAST_INSERT_ID()')[0]['art_id'];
+    $art_id = GetData($artsql)[0]['art_id'];
 } else {
     $art_id = $data[0]['art_id'];
 }
 
 // get data from rest of form
 $albumnaam = htmlspecialchars(ucwords(strtolower($_POST['alb_naam'])),  ENT_QUOTES);
-$albumyear = $_POST['alb_year']
+//$albumyear = $_POST['alb_year'];
 
-// create sql 
-$albsql = 'INSERT INTO album (alb_naam, alb_art_id) VALUES ';
-$artsql .= $albumnaam . ', ';
-$artsql .= $art_id . ')'; 
-
+// create sql
+$albsql = "INSERT INTO album (alb_naam, alb_art_id) VALUES ('" . $albumnaam . "', " .  $art_id . ")";
 $result = ExecuteSQL( $albsql );
-$alb_id = ExecuteSQL( 'SELECT LAST_INSERT_ID()')[0]['a_id'];
+
+// CHECK IF ARTIST ID ALREADY HAS THIS ALBUM IN DATABASE!!
+
+// get new album id
+$albsql = "SELECT alb_id FROM album WHERE alb_naam='" . $albumnaam . "' AND alb_art_id=" . $art_id;
+$alb_id = GetData($albsql)[0]['alb_id'];
 
 
 // get data from rest of form
@@ -59,6 +60,7 @@ if (isset($_FILES['alb_img']) && $_FILES['alb_img']['error'] === UPLOAD_ERR_OK)
     // sanitize file-name
     //$newFileName = md5(time() . $fileName) . '.' . $fileExtension;
     $newFileName = $alb_id . '-' . str_replace(' ', '-' ,strtolower($albumnaam)) . '.' . $fileExtension;
+    //$newFileName = str_replace(' ', '-' ,strtolower($albumnaam)) . '.' . $fileExtension;
 
     // check if file has one of the following extensions
     $allowedfileExtensions = array('jpg', 'gif', 'png', 'jpeg');
@@ -72,7 +74,9 @@ if (isset($_FILES['alb_img']) && $_FILES['alb_img']['error'] === UPLOAD_ERR_OK)
       if(move_uploaded_file($fileTmpPath, $dest_path)) 
       {
         $message ='File is successfully uploaded.';
-        ExecuteSQL('INSERT INTO album (alb_img) VALUES ' . $newFileName);
+        $imgsql = "UPDATE album SET alb_img = '" . $newFileName . "' WHERE alb_id = " . $alb_id;
+        var_dump($imgsql);
+        ExecuteSQL($imgsql);
       }
       else 
       {
@@ -95,7 +99,6 @@ $_SESSION['post'] = $_POST;
 
 print $message;
 
-// SEND USER BACK TO FORM... ?
-// header("Location: update-db.php");
-}
+// SEND USER TO NEW ALBUM PAGE ?
+header("Location: ./../album.php?alb_id=" . $alb_id . "&art_id=" . $art_id);
 }
