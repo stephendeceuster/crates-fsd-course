@@ -26,8 +26,9 @@ function MakeDatalistArtist ($sql) {
 
     $data = GetData($sql);
     foreach ($data as $row) {
-        $datalist .= "<option value=" . row[0] . ">";
+        $datalist .= "<option value='" . $row[0] . "'>";
     }
+    $datalist .= "</datalist>";
     return $datalist;
 }
 
