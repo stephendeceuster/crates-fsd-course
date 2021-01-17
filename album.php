@@ -1,6 +1,6 @@
 <?php
-error_reporting( E_ALL );
-ini_set( 'display_errors', 1 );
+//error_reporting( E_ALL );
+//ini_set( 'display_errors', 1 );
 
 require_once "lib/autoload.php";
 
@@ -18,7 +18,10 @@ $query .= "where alb_id = " . $_GET['alb_id'] ;
 $data = GetData($query);
 
 //get template
-$template = file_get_contents("templates/album.html");
+$template = file_get_contents("templates/head.html");
+$template .= file_get_contents("templates/header.html");
+$template .= file_get_contents("templates/album.html");
+$template .= file_get_contents("templates/footer.html");
 
 //merge
 $html = MergeViewWithData($template, $data);
