@@ -1,111 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Resultaten : XXXXXXX | Crates</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
-</head>
-
-<body>
-    <header>
-        <img src="./assets/img/crates-logo.svg" alt="" class="logo">
-        <nav>
-            <ul>
-                <li><a href="#">Vind platen</a></li>
-                <li><a href="#">Mijn collectie</a></li>
-                <li><a href="#">Mijn wishlist</a></li>
-                <li><a href="#">Mijn vrienden</a></li>
-                <li><a href="#">Mijn profiel</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <form class="main--search" action="">
-            <input type="text" placeholder="Zoek een album">
-            <button class="btn-search" type="submit">
-                <svg class="icon icon-stack">
-                    <use xlink:href="./assets/icons/symbol-defs.svg#icon-search"></use>
-                </svg>
-            </button>
-        </form>
-        <h1>Resultaat: %ZOEKTERM%</h1>
-        <div class="sort">
-            <label for="sorting">Sorteer op : </label>
-            <select name="sorting" id="sorting">
-                <option value="">albumnaam</option>
-                <option value="">artiestnaam</option>
-                <option value="">populariteit</option>
-                <option value="">quotering</option>
-            </select>
+<main>
+    <form class="main--search" action="">
+        <input type="text" placeholder="Zoek een album">
+        <button class="btn-search" type="submit">
+            <svg class="icon icon-stack">
+                <use xlink:href="./assets/icons/symbol-defs.svg#icon-search"></use>
+            </svg>
+        </button>
+    </form>
+    <h1>Resultaat: %ZOEKTERM%</h1>
+    <div class="sort">
+        <label for="sorting">Sorteer op : </label>
+        <select name="sorting" id="sorting">
+            <option value="">albumnaam</option>
+            <option value="">artiestnaam</option>
+            <option value="">populariteit</option>
+            <option value="">quotering</option>
+        </select>
+    </div>
+    <div class="search-results">
+        <div class="album">
+            <a href="#"><img src="./assets/uploads/into-the-wild.jpg" alt="" class="album-cover"></a>
+            <a href="#">
+                <h2 class="album-title">Into the Wild</h2>
+            </a>
+            <a href="#">
+                <h3 class="album-artist">Eddie Vedder</h3>
+            </a>
         </div>
-        <div class="search-results">
-            <div class="album">
-                <a href="#"><img src="./assets/uploads/into-the-wild.jpg" alt="" class="album-cover"></a>
-                <a href="#">
-                    <h2 class="album-title">Into the Wild</h2>
-                </a>
-                <a href="#">
-                    <h3 class="album-artist">Eddie Vedder</h3>
-                </a>
-            </div>
-            <div class="album">
-                <a href="#"><img src="./assets/uploads/blood.jpg" alt="" class="album-cover"></a>
-                <a href="#">
-                    <h2 class="album-title">Blood</h2>
-                </a>
-                <a href="#">
-                    <h3 class="album-artist">Lianne La Havas</h3>
-                </a>
-            </div>
-            <div class="album">
-                <a href="#"><img src="assets/uploads/at-carnegie-hall.jpg" alt="" class="album-cover"></a>
-                <a href="#">
-                    <h2 class="album-title">At Carnegie Hall</h2>
-                </a>
-                <a href="#">
-                    <h3 class="album-artist">Buena Vista Social Club</h3>
-                </a>
-            </div>
-            <div class="album">
-                <a href="#"><img src="assets/uploads/at-san-quentin.jpg" alt="" class="album-cover"></a>
-                <a href="#">
-                    <h2 class="album-title">At San Quentin</h2>
-                </a>
-                <a href="#">
-                    <h3 class="album-artist">Johnny Cash</h3>
-                </a>
-            </div>
-            <div class="album">
-                <a href="#"><img src="./assets/uploads/op-de-groei.jpg" alt="" class="album-cover"></a>
-                <a href="#">
-                    <h2 class="album-title">Op De Groei</h2>
-                </a>
-                <a href="#">
-                    <h3 class="album-artist">Bart Peeters</h3>
-                </a>
-            </div>
-            <div class="album">
-                <a href="#"><img src="./assets/uploads/pastel-blues.jpg" alt="" class="album-cover"></a>
-                <a href="#">
-                    <h2 class="album-title">Pastel Blues</h2>
-                </a>
-                <a href="#">
-                    <h3 class="album-artist">Nina Simone</h3>
-                </a>
-            </div>
-            <div class="album">
-                <a href="#"><img src="./assets/uploads/silk-soul.jpg" alt="" class="album-cover"></a>
-                <a href="#">
-                    <h2 class="album-title">Silk & Soul</h2>
-                </a>
-                <a href="#">
-                    <h3 class="album-artist">Nina Simone</h3>
-                </a>
-            </div>
-
+        <div class="album">
+            <a href="#"><img src="./assets/uploads/blood.jpg" alt="" class="album-cover"></a>
+            <a href="#">
+                <h2 class="album-title">Blood</h2>
+            </a>
+            <a href="#">
+                <h3 class="album-artist">Lianne La Havas</h3>
+            </a>
         </div>
-    </main>
-</body>
+        <div class="album">
+            <a href="#"><img src="assets/uploads/at-carnegie-hall.jpg" alt="" class="album-cover"></a>
+            <a href="#">
+                <h2 class="album-title">At Carnegie Hall</h2>
+            </a>
+            <a href="#">
+                <h3 class="album-artist">Buena Vista Social Club</h3>
+            </a>
+        </div>
+        <div class="album">
+            <a href="#"><img src="assets/uploads/at-san-quentin.jpg" alt="" class="album-cover"></a>
+            <a href="#">
+                <h2 class="album-title">At San Quentin</h2>
+            </a>
+            <a href="#">
+                <h3 class="album-artist">Johnny Cash</h3>
+            </a>
+        </div>
+        <div class="album">
+            <a href="#"><img src="./assets/uploads/op-de-groei.jpg" alt="" class="album-cover"></a>
+            <a href="#">
+                <h2 class="album-title">Op De Groei</h2>
+            </a>
+            <a href="#">
+                <h3 class="album-artist">Bart Peeters</h3>
+            </a>
+        </div>
+        <div class="album">
+            <a href="#"><img src="./assets/uploads/pastel-blues.jpg" alt="" class="album-cover"></a>
+            <a href="#">
+                <h2 class="album-title">Pastel Blues</h2>
+            </a>
+            <a href="#">
+                <h3 class="album-artist">Nina Simone</h3>
+            </a>
+        </div>
+        <div class="album">
+            <a href="#"><img src="./assets/uploads/silk-soul.jpg" alt="" class="album-cover"></a>
+            <a href="#">
+                <h2 class="album-title">Silk & Soul</h2>
+            </a>
+            <a href="#">
+                <h3 class="album-artist">Nina Simone</h3>
+            </a>
+        </div>
 
-</html>
+    </div>
+</main>
