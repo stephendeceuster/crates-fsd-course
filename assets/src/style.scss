@@ -43,6 +43,8 @@ label {
   font-weight: 700;
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
+  display: block;
+
 }
 input {
   width: 100%;
@@ -81,6 +83,7 @@ header {
   background-color: $clr4;
   width: 15rem;
   padding: 2rem;
+  min-height: 100vh;
   .logo {
     width: 8rem;
     margin-bottom: 2rem;

@@ -6,6 +6,10 @@ require_once "autoload.php";
 var_dump($_POST);
 $message = ''; 
 
+uploadAlbum();
+
+function uploadAlbum() {
+  if ( $_SERVER['REQUEST_METHOD'] == "POST" ) {
 //check if users comes from update-db form
 if (!isset($_POST['uploadBtn']) && $_POST['uploadBtn'] != 'Maak album aan') { 
     // if not from form -> stop & send to other page.
@@ -26,9 +30,20 @@ if (!$data) {
 }
 
 // get data from rest of form
+$albumnaam = htmlspecialchars(ucwords(strtolower($_POST['alb_naam'])),  ENT_QUOTES);
+$albumyear = $_POST['alb_year']
+
+// create sql 
+$albsql = 'INSERT INTO album (alb_naam, alb_art_id) VALUES ';
+$artsql .= $albumnaam . ', ';
+$artsql .= $art_id . ')'; 
+
+$result = ExecuteSQL( $albsql );
+$alb_id = ExecuteSQL( 'SELECT LAST_INSERT_ID()')[0]['a_id'];
+
+
+// get data from rest of form
 $albumnaam = $_POST['alb_naam'];
-
-
 
 
 if (isset($_FILES['alb_img']) && $_FILES['alb_img']['error'] === UPLOAD_ERR_OK)
@@ -42,7 +57,8 @@ if (isset($_FILES['alb_img']) && $_FILES['alb_img']['error'] === UPLOAD_ERR_OK)
     $fileExtension = strtolower(end($fileNameCmps));
 
     // sanitize file-name
-    $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
+    //$newFileName = md5(time() . $fileName) . '.' . $fileExtension;
+    $newFileName = $alb_id . '-' . str_replace(' ', '-' ,strtolower($albumnaam)) . '.' . $fileExtension;
 
     // check if file has one of the following extensions
     $allowedfileExtensions = array('jpg', 'gif', 'png', 'jpeg');
@@ -56,6 +72,7 @@ if (isset($_FILES['alb_img']) && $_FILES['alb_img']['error'] === UPLOAD_ERR_OK)
       if(move_uploaded_file($fileTmpPath, $dest_path)) 
       {
         $message ='File is successfully uploaded.';
+        ExecuteSQL('INSERT INTO album (alb_img) VALUES ' . $newFileName);
       }
       else 
       {
@@ -74,8 +91,11 @@ if (isset($_FILES['alb_img']) && $_FILES['alb_img']['error'] === UPLOAD_ERR_OK)
   }
 
 $_SESSION['message'] = $message;
+$_SESSION['post'] = $_POST;
 
 print $message;
 
 // SEND USER BACK TO FORM... ?
 // header("Location: update-db.php");
+}
+}
