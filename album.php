@@ -39,7 +39,7 @@ $CSRF = GenerateCSRF("album.php");
 
 if ($result[0]['0'] == 1) {
    //=>tekst 'in collectie';
-    $html = str_replace("%button-collectie%", "<h2>In Collectie</h2>", $html);
+    $html = str_replace("%button-collectie%", "<h4 class='in-collection'>In Collectie</h4>", $html);
     $html = str_replace("%button-wishlist%", "", $html);
 } elseif ($result[0]['0'] == 0) {
     //=> album krijgt 2 knoppen
@@ -65,7 +65,7 @@ if ($result[0]['0'] == 1) {
     $output = str_replace("%alb_id%", $_GET['alb_id'], $template);
     $output = str_replace("%art_id%", $_GET['art_id'], $output);
     $output = str_replace("%csrf_token%", $CSRF , $output);
-    $html = str_replace("%button-wishlist%", "<h2>In Wishlist</h2>", $html);
+    $html = str_replace("%button-wishlist%", "<h4 class='in-wishlist'>In Wishlist</h4>", $html);
     $html = str_replace("%button-collectie%", $output, $html);
 }
 
