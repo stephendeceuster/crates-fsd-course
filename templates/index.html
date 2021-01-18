@@ -1,15 +1,18 @@
 <div class='login'>
     <div class='inlog-form'>
         <img class='logo' src="./assets/img/crates-logo.svg" alt="Crates logo">
-        <form id="login" name="login" method="POST" action="./lib/login.php">
+        <form id="login" name="login" method="POST" action="./lib/login_check.php">
+            <!--security-->
+            <input type="hidden" name="csrf" value="%csrf_token%">
+            <!--end security-->
             <h2>Log in</h2>
             <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" name="email" id="email">
+                <label for="use_email">Email</label>
+                <input type="text" name="use_email" id="use_email">
             </div>
             <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password">
+                <label for="use_password">Password</label>
+                <input type="password" name="use_password" id="use_password">
             </div>
             <div class="submit">
                 <button type="submit">Inloggen</button>

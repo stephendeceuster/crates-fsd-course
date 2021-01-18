@@ -4,6 +4,7 @@
 
 // Haalt de formules binnen
 require_once "lib/autoload.php";
+
 $title = 'Registreer';
 $html = file_get_contents('./templates/head.html');
 
