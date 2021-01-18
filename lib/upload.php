@@ -11,7 +11,11 @@ require_once "autoload.php";
   if ( $_SERVER['REQUEST_METHOD'] == "POST" ) {
 
 // ADD CSRF !!!!!
+//controle CSRF token
+if ( ! key_exists("csrf", $_POST)) die("Missing CSRF");
+if ( ! hash_equals( $_POST['csrf'], $_SESSION['lastest_csrf'] ) ) die("Problem with CSRF");
 
+$_SESSION['lastest_csrf'] = "";
 
 // get artist from form & check if already in database.
 $art_naam = htmlspecialchars(ucwords(strtolower($_POST['art_naam'])),  ENT_QUOTES); // Naam moet nog verder opgekuisd worden?
