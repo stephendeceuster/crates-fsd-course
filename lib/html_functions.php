@@ -28,7 +28,7 @@ function MergeViewWithExtraElements( $template, $selects )
 {
     foreach ( $selects as $key => $select )
     {
-        $template = str_replace( "@$key@", $select, $template );
+        $template = str_replace( "%$key%", $select, $template );
     }
     return $template;
 }
@@ -37,7 +37,7 @@ function MergeViewWithErrors( $template, $errors )
 {
     foreach ( $errors as $key => $error )
     {
-        $template = str_replace( "@$key@", "<p style='color:red'>$error</p>", $template );
+        $template = str_replace( "%$key%", "<p style='color:red'>$error</p>", $template );
     }
     return $template;
 }
@@ -48,7 +48,7 @@ function RemoveEmptyErrorTags( $template, $data )
     {
         foreach( array_keys($row) as $field )  //eerst "img_id", dan "img_title", ...
         {
-            $template = str_replace( "@$field" . "_error@", "", $template );
+            $template = str_replace( "%$field" . "_error%", "", $template );
         }
     }
 

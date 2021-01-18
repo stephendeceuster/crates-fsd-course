@@ -24,9 +24,10 @@ $html .= file_get_contents("./templates/zoekresultaten.html");
 $html = str_replace("%ZOEKTERM%", $result, $html);
 
 //get data
-$sql = "select * from album
-left join artist on alb_art_id = art_id 
-where art_naam like '%$result%' or alb_naam like '%$result%'";
+$sql = "select * from album ";
+$sql .= "left join artist on alb_art_id = art_id ";
+$sql .= "where art_naam like '%$result%' or alb_naam like '%$result%' ";
+$sql .= "order by alb_naam asc ";
 
 $data = GetData($sql);
 //get template

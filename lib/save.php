@@ -1,4 +1,6 @@
 <?php
+error_reporting( E_ALL );
+ini_set( 'display_errors', 1 );
 require_once "autoload.php";
 
 SaveFormData();
@@ -30,7 +32,20 @@ function SaveFormData()
         $sending_form_uri = $_SERVER['HTTP_REFERER'];
         CompareWithDatabase( $table, $pkey );
 
-        if ( count($_SESSION['errors']) > 0 ) { header( "Location: " . $sending_form_uri ); exit(); }
+        //Validaties voor het registratieformulier
+        if ( $table == "user" )
+        {
+                ValidateUsrPassword( $_POST['use_password'] );
+                ValidateUsrEmail( $_POST['use_email'] );
+                CheckUniqueUsrEmail( $_POST['use_email'] );
+        }
+
+        //terugkeren naar afzender als er een fout is
+        if ( count($_SESSION['errors']) > 0 )
+        {
+            $_SESSION['OLD_POST'] = $_POST;
+            header( "Location: " . $sending_form_uri ); exit();
+        }
 
         //insert or update?
         if ( $_POST["$pkey"] > 0 ) $update = true;
@@ -54,7 +69,11 @@ function SaveFormData()
                 continue;
             }
 
-            //all other data-fields
+            if ( $field == "use_password" ) //encrypt usr_password
+            {
+                $value = password_hash( $value, PASSWORD_BCRYPT );
+            }
+
             $keys_values[] = " $field = '$value' " ;
         }
 
@@ -68,6 +87,11 @@ function SaveFormData()
 
         //run SQL
         $result = ExecuteSQL( $sql );
+
+        if ( $result AND $table == "user" )
+        {
+            $_SESSION['msgs'][] = "Bedankt voor uw registratie";
+        }
 
         //output if not redirected
         print $sql ;
