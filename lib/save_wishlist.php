@@ -9,13 +9,15 @@ require_once "autoload.php";
 if ( ! key_exists("csrf", $_POST)) die("Missing CSRF");
 if ( ! hash_equals( $_POST['csrf'], $_SESSION['lastest_csrf'] ) ) die("Problem with CSRF");
 
-$queryLisID = 'SELECT inh_lis_id FROM user_album WHERE inh_alb_id = ' . $_POST['inh_alb_id'];
-$result = GetData($queryLisID);
+$sql = "select use_id from user ";
+$sql .= "where use_email = '" . $_SESSION['user']['use_email'] . "'";
 
+// use_id
+$id = GetData($sql);
 
 $query = "INSERT INTO user_album ";
 $query .= "(inh_use_id, inh_alb_id, inh_lis_id) ";
-$query .= "VALUES (" . $_POST["inh_use_id"] . ", " . $_POST["inh_alb_id"] . "," . $_POST["inh_lis_id"] . ") ";
+$query .= "VALUES (" . $id[0]['use_id'] . ", " . $_POST["inh_alb_id"] . "," . $_POST["inh_lis_id"] . ") ";
 
 // Create and check connection
 try {

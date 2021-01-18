@@ -10,7 +10,6 @@ $html = file_get_contents('./templates/head.html');
 $html = str_replace("%title%", "Search" , $html);
 $html .= file_get_contents('./templates/header.html');
 
-
 // Haalt zoekresultaat uit form
 $result = '';
 if ($_GET['search']) {

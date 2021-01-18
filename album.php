@@ -32,10 +32,22 @@ $html = MergeViewWithData($template, $data);
 //---------------------------------------------------------------------------------------
 
 // Bepaalt of een album al in user_albums is opgenomen
-$queryLisID = 'SELECT inh_lis_id FROM user_album WHERE inh_alb_id = ' . $_GET['alb_id'];
+$sql = "select use_id from user ";
+$sql .= "where use_email = '" . $_SESSION['user']['use_email'] . "'";
+
+// use_id
+$id = GetData($sql);
+
+// use_lis_id
+$queryLisID = "SELECT inh_lis_id FROM user_album ";
+$queryLisID .= "WHERE inh_alb_id = " . $_GET['alb_id'];
+$queryLisID .= " AND inh_use_id = " . $id[0]['use_id'];
 $result = GetData($queryLisID);
 
+//CSRF
 $CSRF = GenerateCSRF("album.php");
+
+//use_list 1, 2 of 0
 
 if ($result[0]['0'] == 1) {
    //=>tekst 'in collectie';
