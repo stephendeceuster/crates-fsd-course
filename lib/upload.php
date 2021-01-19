@@ -61,9 +61,7 @@ if (isset($_FILES['alb_img']) && $_FILES['alb_img']['error'] === UPLOAD_ERR_OK)
     $fileExtension = strtolower(end($fileNameCmps));
 
     // sanitize file-name
-    //$newFileName = md5(time() . $fileName) . '.' . $fileExtension;
     $newFileName = $alb_id . '-' . str_replace(' ', '-' ,strtolower($albumnaam)) . '.' . $fileExtension;
-    //$newFileName = str_replace(' ', '-' ,strtolower($albumnaam)) . '.' . $fileExtension;
 
     // check if file has one of the following extensions
     $allowedfileExtensions = array('jpg', 'gif', 'png', 'jpeg');
