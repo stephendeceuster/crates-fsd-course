@@ -297,14 +297,14 @@ div.search-results {
   flex-wrap: wrap;
 }
 div.search-results > *:nth-child(1n+0) {
-  width: calc(calc(100% - 4rem) / 3);
+  width: calc(calc(100% - 6rem) / 4);
   margin: 0 2rem 2rem 0;
 }
-div.search-results > *:nth-child(3n+0) {
+div.search-results > *:nth-child(4n+0) {
   margin-right: 0;
 }
 div.search-results .album img {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   border-radius: 2px;
   box-shadow: 0 1px 2px #112627;
   transition: all 400ms ease;
@@ -325,6 +325,32 @@ div.search-results .album .album-artist {
   padding-left: 0.25rem;
 }
 
+@media screen and (max-width: 70em) {
+  div.search-results {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  div.search-results > *:nth-child(1n+0) {
+    width: calc(calc(100% - 4rem) / 3);
+    margin: 0 2rem 2rem 0;
+  }
+  div.search-results > *:nth-child(3n+0) {
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 55em) {
+  div.search-results {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  div.search-results > *:nth-child(1n+0) {
+    width: calc(calc(100% - 2rem) / 2);
+    margin: 0 2rem 2rem 0;
+  }
+  div.search-results > *:nth-child(2n+0) {
+    margin-right: 0;
+  }
+}
 div.login {
   width: 100vw;
   height: 100vh;
