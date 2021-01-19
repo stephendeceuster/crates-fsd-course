@@ -1,15 +1,35 @@
+<<<<<<< Updated upstream
 
  
         <h1>Resultaat: %ZOEKTERM%</h1>
         <div class="sort">
             <label for="sorting">Sorteer op : </label>
+=======
+<h1>Resultaat: %ZOEKTERM%</h1>
+<div class="sort">
+    <form id="sort" name="sort" method="GET" action="%currentURL%">
+        <input type="text" class="hidden" id="search" name="search" value="%ZOEKTERM%" readonly>
+        <label for="sorting">Sorteer op : </label>
+        <div class="custom-select" style="width:200px;">
+>>>>>>> Stashed changes
             <select name="sorting" id="sorting">
                 <option value="">albumnaam</option>
                 <option value="">artiestnaam</option>
                 <option value="">populariteit</option>
                 <option value="">quotering</option>
             </select>
+<<<<<<< Updated upstream
         </div>
         <div class="search-results">
             %searchresult%
+=======
+>>>>>>> Stashed changes
         </div>
+        <button type="submit" class="collection-button">
+            Sorteer
+        </button>
+    </form>
+</div>
+<div class="search-results">
+    %searchresult%
+</div>
