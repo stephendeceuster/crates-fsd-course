@@ -3,7 +3,7 @@
         <h1>Resultaat: %ZOEKTERM%</h1>
         <div class="sort">
             <label for="sorting">Sorteer op : </label>
-            <form id="sort" name="sort" method="GET" action="result.php">
+            <form id="sort" name="sort" method="GET" action="%currentURL%">
             <select name="sorting" id="sorting">
                 <option value="alb_naam">albumnaam</option>
                 <option value="art_naam">artiestnaam</option>
@@ -13,6 +13,7 @@
                 <button type="submit" class="collection-button">
                     Sorteer
                 </button>
+            </form>
         </div>
         <div class="search-results">
             %searchresult%

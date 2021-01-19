@@ -8,6 +8,7 @@ require_once "lib/autoload.php";
 $html = file_get_contents('./templates/head.html');
 $html = str_replace("%title%", "Search" , $html);
 $html .= file_get_contents('./templates/header.html');
+$html .= file_get_contents('./templates/searchbar.html');
 
 // Haalt zoekresultaat uit form
 $result = '';
@@ -20,6 +21,8 @@ $html .= file_get_contents("./templates/zoekresultaten.html");
 // Haalt de albumresultaten uit de db,
 // alles dus als er geen zoekopdracht wordt uitgevoerd
 $html = str_replace("%ZOEKTERM%", $result, $html);
+$currentURL = $_SERVER['REQUEST_URI'];
+$html = str_replace("%currentURL%", $currentURL, $html);
 
 // Sorteer via dropdown
 if ($_GET['sorting']) {

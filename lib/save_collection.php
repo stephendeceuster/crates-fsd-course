@@ -19,7 +19,7 @@ $queryLisID .= "WHERE inh_alb_id = " . $_POST["inh_alb_id"];
 $queryLisID .= " AND inh_use_id = " . $id[0]['use_id'];
 $result = GetData($queryLisID);
 
-if ($result[0]['0'] == 0) {
+if ($result[0]['inh_lis_id'] == 0) {
 $query = "INSERT INTO user_album ";
 $query .= "(inh_use_id, inh_alb_id, inh_lis_id) ";
 $query .= "VALUES (" . $id[0]['use_id'] . ", " . $_POST["inh_alb_id"] . "," . $_POST["inh_lis_id"] . ") ";
@@ -32,15 +32,16 @@ $query .= "VALUES (" . $id[0]['use_id'] . ", " . $_POST["inh_alb_id"] . "," . $_
     $query .= " AND inh_use_id = " . $id[0]['use_id'];
 }
 // Create and check connection
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}
-catch(PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
+//try {
+//    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+//    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//}
+//catch(PDOException $e) {
+//    echo "Connection failed: " . $e->getMessage();
+//}
 
 //define and execute query
-$result = $conn->query( $query );
+//$result = $conn->query( $query );
+$result = ExecuteSQL($query);
 
 header("Location: ../album.php?alb_id=" . $_POST["inh_alb_id"] . "&art_id=" . $_POST["art_id"]);
