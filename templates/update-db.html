@@ -31,13 +31,18 @@
         </div>
 
         <div class="form-group">
+            <label for="alb_releaseyear">Jaar van uitgave</label>
+            <input type="number" id="alb_releaseyear" name="alb_releaseyear" min="1900" max="%currentYear%" step="1" />
+            <!--%art_naam_error%-->
+        </div>
+
+        <div class="form-group">
             <label for="alb_img">Kies albumcover</label>
             <input type="file" id="alb_img" name="alb_img">
             <!--%alb_img_error%-->
         </div>
 
         <div>
-            <!--<input type="submit" name="uploadBtn" value="Maak album aan">-->
             <button type='submit'>Maak album aan</button>
         </div>
 

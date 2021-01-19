@@ -4,7 +4,7 @@ ini_set( 'display_errors', 1 );
 
 require_once "autoload.php";
 
-if ($public_access !== true){
+//if ($public_access !== true){
     if ( LoginCheck() )
     {
         $_SESSION['user'] = $_POST;
@@ -16,7 +16,7 @@ if ($public_access !== true){
         unset( $_SESSION['user'] );
         header('location: ../index.php');
     }
-}
+//}
 
 
 

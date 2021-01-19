@@ -2,7 +2,7 @@
 @use './base/fonts';
 @use './base/variables' as *;
 @use './base/mixins' as *;
-@import "./../../icons/style.css";
+@import url("./../icons/style.css");
 
 body {
   background-color: $white;
@@ -34,8 +34,13 @@ p {
 }
 
 a {
-  color: $clr3;
+  color: $clr2;
   font-weight: 700;
+  text-decoration: none;
+  transition: all 400ms ease;
+  &:hover {
+    color: $clr3;
+  }
 }
 
 // form elements
@@ -56,6 +61,8 @@ input {
   padding-right: 1rem;
   color: $clr1;
   font-size: 1.25rem;
+  font-style: italic;
+  font-weight: 400;
   outline: none;
   background-color: $clr4;
   &::placeholder {
@@ -155,23 +162,23 @@ form.main-search {
 div.search-results {
   display: flex;
   flex-wrap: wrap;
-  @include make-col(3, 2rem);
-  .album a {
-    text-decoration: none;
-    color: $clr2;
-    &:hover {
-      color: $clr3;
-    }
+  @include make-col(4, 2rem);
+  .album {
     img {
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
       border-radius: 2px;
       box-shadow: 0 1px 2px $clr1;
+      transition: all 400ms ease;
+    }
+    &:hover img {
+      transform: scale(1.025) rotate(3deg);
     }
     .album-title {
       font-size: 1.25rem;
       font-weight: 700;
       margin-bottom: 0.25rem;
       padding-left: 0.25rem;
+      
     }
     .album-artist {
       font-style: italic;
@@ -179,6 +186,18 @@ div.search-results {
       margin-bottom: 1.5rem;
       padding-left: 0.25rem;
     }
+  }
+}
+
+@media screen and (max-width: 70em) {
+  div.search-results {
+    @include make-col(3, 2rem);
+  }
+}
+
+@media screen and (max-width: 55em) {
+  div.search-results {
+    @include make-col(2, 2rem);
   }
 }
 
@@ -216,5 +235,17 @@ div.login {
         height: 3rem;
       }
     }
+  }
+}
+
+// album page
+main.album-page {
+  .album-cover{
+    float: right;
+    width: 45%;
+  }
+  .buttons {
+    float: right;
+    width: 45%;
   }
 }

@@ -1,32 +1,23 @@
-<main class="album-page">
-<div class="album">
-    <a href="#"><img src="./assets/uploads/%alb_img%" alt="" class="album-cover"></a>
-    <a href="#">
+    <div class="album">
+        <img src="./assets/uploads/%alb_img%" alt="%alb_naam% - %art_naam%" class="album-cover">
         <h2 class="album-title">%alb_naam%</h2>
-    </a>
-    <a href="#">
-        <h3 class="album-artist">%art_naam%</h3>
-    </a>
-    <a href="#">
+        
+        <a href="#">
+            <h3 class="album-artist">%art_naam%</h3>
+        </a>
         <h3 class="album-genre">%gen_naam%</h3>
-    </a>
-</div>
-<div class="buttons">
-    %button-collectie%
-    %button-wishlist%
-</div>
-<div class="songs">
-    <h2>Songs</h2>
-    %songs%
-</div>
-<div class="andere_albums">
-    %albums%
-</div>
-</main>
 
-
-
-
-
-
-
+    </div>
+    <div class="buttons">
+        %button-collectie%
+        %button-wishlist%
+    </div>
+    <div class="songs ">
+        <h2>Songs</h2>
+        <ol>
+        %songs%
+        </ol>
+    </div>
+    <div class="andere_albums">
+        %albums%
+    </div>

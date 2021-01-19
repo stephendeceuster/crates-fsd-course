@@ -41,14 +41,14 @@ function SaveFormData()
         }
 
         //terugkeren naar afzender als er een fout is
-        if ( count($_SESSION['errors']) > 0 )
+        if ( isset($_SESSION['errors'] ) and count($_SESSION['errors']) > 0 )
         {
-            $_SESSION['OLD_POST'] = $_POST;
+            $_SESSION['old_post'] = $_POST;
             header( "Location: " . $sending_form_uri ); exit();
         }
 
         //insert or update?
-        if ( $_POST["$pkey"] > 0 ) $update = true;
+        if ( isset($_POST["$pkey"]) and $_POST["$pkey"] > 0 ) $update = true;
         else $insert = true;
 
         if ( $update ) $sql = "UPDATE $table SET ";
@@ -94,9 +94,9 @@ function SaveFormData()
         }
 
         //output if not redirected
-        print $sql ;
-        print "<br>";
-        print $result->rowCount() . " records affected";
+        //print $sql ;
+        //print "<br>";
+        //print $result->rowCount() . " records affected";
 
         //redirect after insert or update
         if ( $insert AND $_POST["afterinsert"] > "" ) header("Location: ../" . $_POST["afterinsert"] );
