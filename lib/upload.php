@@ -33,10 +33,10 @@ if (!$data) {
 
 // get data from rest of form
 $albumnaam = htmlspecialchars(ucwords(strtolower($_POST['alb_naam'])),  ENT_QUOTES);
-//$albumyear = $_POST['alb_year'];
+$albumyear = $_POST['alb_releaseyear'];
 
-// create sql
-$albsql = "INSERT INTO album (alb_naam, alb_art_id) VALUES ('" . $albumnaam . "', " .  $art_id . ")";
+// create sql to insert formdata to database
+$albsql = "INSERT INTO album (alb_naam, alb_art_id, alb_releaseyear) VALUES ('" . $albumnaam . "', " .  $art_id . ", " . $albumyear . ")";
 $result = ExecuteSQL( $albsql );
 
 // CHECK IF ARTIST ID ALREADY HAS THIS ALBUM IN DATABASE!!
@@ -47,7 +47,7 @@ $alb_id = GetData($albsql)[0]['alb_id'];
 
 
 // get data from rest of form
-$albumnaam = $_POST['alb_naam'];
+//$albumnaam = $_POST['alb_naam'];
 
 
 if (isset($_FILES['alb_img']) && $_FILES['alb_img']['error'] === UPLOAD_ERR_OK)

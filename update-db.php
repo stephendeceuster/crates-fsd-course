@@ -16,6 +16,8 @@ $title = 'Upload album';
 
 $CSRF = GenerateCSRF("update-db.php");
 
+$currentYear = date('Y'); 
+
 // View : get update template
 $html ='';
 $html .= file_get_contents('./templates/head.html');
@@ -31,6 +33,7 @@ $datalist = MakeDatalistArtist($datalistSql);
 $html = str_replace("%title%", $title, $html);
 $html = str_replace('%csrf_token%', $CSRF, $html);
 $html = str_replace('%datalist%', $datalist, $html);
+$html = str_replace('%currentYear%', $currentYear, $html);
 
 echo $html;
 
