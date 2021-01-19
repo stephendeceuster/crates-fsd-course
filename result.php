@@ -1,10 +1,9 @@
 <?php
 // Checkt of er errors zijn
-// error_reporting( E_ALL );
-// ini_set( 'display_errors', 1 );
+//error_reporting( E_ALL );
+//ini_set( 'display_errors', 1 );
 // Haalt de formules binnen
 require_once "lib/autoload.php";
-
 
 $html = file_get_contents('./templates/head.html');
 $html = str_replace("%title%", "Search" , $html);
@@ -22,11 +21,18 @@ $html .= file_get_contents("./templates/zoekresultaten.html");
 // alles dus als er geen zoekopdracht wordt uitgevoerd
 $html = str_replace("%ZOEKTERM%", $result, $html);
 
+// Sorteer via dropdown
+if ($_GET['sorting']) {
+    $sort = $_GET['sorting'];
+}else{
+    $sort = "alb_naam";
+}
+
 //get data
 $sql = "select * from album ";
 $sql .= "left join artist on alb_art_id = art_id ";
 $sql .= "where art_naam like '%$result%' or alb_naam like '%$result%' ";
-$sql .= "order by alb_naam asc ";
+$sql .= "order by " . $sort . " asc ";
 
 $data = GetData($sql);
 //get template
