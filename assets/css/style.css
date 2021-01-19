@@ -403,7 +403,7 @@ main.album-page .buttons {
 /* The container must be positioned relative: */
 .custom-select {
   position: relative;
-  font-family: Arial;
+  margin-bottom: 1rem;
 }
 
 .custom-select select {

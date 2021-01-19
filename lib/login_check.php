@@ -1,20 +1,22 @@
 <?php
-error_reporting( E_ALL );
-ini_set( 'display_errors', 1 );
+//error_reporting( E_ALL );
+//ini_set( 'display_errors', 1 );
+
+$public_access = true;
 
 require_once "autoload.php";
 
-    if ( LoginCheck() )
-    {
-        $_SESSION['user'] = $_POST;
-        $_SESSION['msgs'][] = "U bent ingelogd!";
-        header('location: ../collection.php');
-    }
-    else
-    {
-        unset( $_SESSION['user'] );
-        header('location: ../index.php');
-    }
+$user = LoginCheck();
+
+if ($user) {
+    $_SESSION['user'] = $user;
+    $_SESSION['msgs'][] = "Hallo " . $user['use_voornaam'] . "!";
+    header('location: ../collection.php');
+} else {
+    unset( $_SESSION['user'] );
+    $_SESSION['msgs'][] = "Er is iets misgelopen met het inloggen.";
+    header('location: ../index.php');
+}
 
 
 
@@ -35,11 +37,13 @@ function LoginCheck()
         $sending_form_uri = $_SERVER['HTTP_REFERER'];
 
         //checking password
-        $password = GetData("select use_password from user where use_email = '". $_POST['use_email'] . "'");
-        $password2 = $password[0][0];
-        $value = $_POST['use_password'];
-        if (password_verify($value , $password2 )){
-            return true;
+        $email = $_POST['use_email'];
+        $pw = $_POST['use_password'];
+        $data = GetData("SELECT * FROM user WHERE use_email = '". $email . "'");
+        
+        if (password_verify($pw , $data[0]['use_password'] )){
+            return $data[0];
         }
     }
+    return NULL;
 }

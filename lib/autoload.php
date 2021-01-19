@@ -8,6 +8,7 @@ require_once "form_elements.php";
 require_once "sanitize.php";
 require_once "validate.php";
 require_once "security.php";
+require_once "access_control.php";
 
 $errors = [];
 $message = [];
