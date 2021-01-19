@@ -20,6 +20,7 @@ $data = GetData($query);
 //get template
 $template = file_get_contents("templates/head.html");
 $template .= file_get_contents("templates/header.html");
+$template .= file_get_contents("templates/searchbar.html");
 $template .= file_get_contents("templates/album.html");
 $template .= file_get_contents("templates/footer.html");
 $template = str_replace('%title%', '%alb_naam% - %art_naam%', $template);

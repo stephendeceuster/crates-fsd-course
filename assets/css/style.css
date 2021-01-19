@@ -357,4 +357,13 @@ div.login div.inlog-form form#login button {
   height: 3rem;
 }
 
+main.album-page .album-cover {
+  float: right;
+  width: 45%;
+}
+main.album-page .buttons {
+  float: right;
+  width: 45%;
+}
+
 /*# sourceMappingURL=style.css.map */
