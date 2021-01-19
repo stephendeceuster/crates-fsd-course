@@ -12,9 +12,17 @@ if ($_GET['search']) {
     $result= $_GET['search'];
 }
 // str replace zoekresultaat
-$html = file_get_contents("./templates/zoekresultaten.html");
+$html = file_get_contents('./templates/head.html');
+$html .= file_get_contents('./templates/header.html');
+$html .= file_get_contents('./templates/searchbar.html');
+$html .= file_get_contents("./templates/zoekresultaten.html");
+$html .= file_get_contents('./templates/footer.html');
 
+$title = 'Mijn collectie';
+$currentURL = $_SERVER['REQUEST_URI'];
+$html = str_replace('%title%', $title, $html);
 $html = str_replace("%ZOEKTERM%", $result, $html);
+$html = str_replace("%currentURL%", $currentURL, $html);
 //print $searchbar;
 
 // Haalt de albumresultaten uit de db, volgens het het id van de user

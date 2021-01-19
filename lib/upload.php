@@ -8,9 +8,8 @@ require_once "autoload.php";
 
  
 
-  if ( $_SERVER['REQUEST_METHOD'] == "POST" ) {
+if ( $_SERVER['REQUEST_METHOD'] == "POST" ) {
 
-// ADD CSRF !!!!!
 //controle CSRF token
 if ( ! key_exists("csrf", $_POST)) die("Missing CSRF");
 if ( ! hash_equals( $_POST['csrf'], $_SESSION['lastest_csrf'] ) ) die("Problem with CSRF");
@@ -35,11 +34,15 @@ if (!$data) {
 $albumnaam = htmlspecialchars(ucwords(strtolower($_POST['alb_naam'])),  ENT_QUOTES);
 $albumyear = $_POST['alb_releaseyear'];
 
+// CHECK IF ARTIST ID ALREADY HAS THIS ALBUM IN DATABASE!!
+//$albsql = "SELECT alb_id FROM album WHERE alb_naam='" . $albumnaam . "' AND alb_art_id=" . $art_id;
+// IF NOT DO ...
 // create sql to insert formdata to database
 $albsql = "INSERT INTO album (alb_naam, alb_art_id, alb_releaseyear) VALUES ('" . $albumnaam . "', " .  $art_id . ", " . $albumyear . ")";
 $result = ExecuteSQL( $albsql );
+// IF IN DB , GO TO ALBUMPAGE + MELDING
 
-// CHECK IF ARTIST ID ALREADY HAS THIS ALBUM IN DATABASE!!
+
 
 // get new album id
 $albsql = "SELECT alb_id FROM album WHERE alb_naam='" . $albumnaam . "' AND alb_art_id=" . $art_id;
