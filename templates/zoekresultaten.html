@@ -1,20 +1,22 @@
 
- 
-        <h1>Resultaat: %ZOEKTERM%</h1>
-        <div class="sort">
-            <label for="sorting">Sorteer op : </label>
-            <form id="sort" name="sort" method="GET" action="%currentURL%">
+<h1>Resultaat: %ZOEKTERM%</h1>
+<div class="sort">
+    <form id="sort" name="sort" method="GET" action="%currentURL%">
+        <input type="text" class="hidden" id="search" name="search" value="%ZOEKTERM%" readonly>
+        <label for="sorting">Sorteer op</label>
+        <div class="custom-select" style="width:200px;">
             <select name="sorting" id="sorting">
                 <option value="alb_naam">albumnaam</option>
                 <option value="art_naam">artiestnaam</option>
                 <option value="alb_releaseyear">releaseyear</option>
                 <option value="alb_genre">genre</option>
             </select>
-                <button type="submit" class="collection-button">
-                    Sorteer
-                </button>
-            </form>
         </div>
-        <div class="search-results">
-            %searchresult%
-        </div>
+        <button type="submit" class="collection-button">
+             Sorteer
+        </button>
+    </form>
+</div>
+<div class="search-results">
+    %searchresult%
+</div>
