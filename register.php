@@ -10,13 +10,15 @@ require_once "lib/autoload.php";
 $title = 'Registreer';
 $html = file_get_contents('./templates/head.html');
 
-if ( count($old_post) > 0 )
+var_dump($old_post);
+
+if ( !empty($old_post) )
 {
     $data = [ 0 => [
-        "use_voornaam" => $old_post['usr_voornaam'],
-        "use_naam" => $old_post['usr_naam'],
-        "use_email" => $old_post['usr_email'],
-        "use_password" => $old_post['usr_password']
+        "use_voornaam" => $old_post['use_voornaam'],
+        "use_naam" => $old_post['use_naam'],
+        "use_email" => $old_post['use_email'],
+        "use_password" => $old_post['use_password']
     ]
     ];
 }
