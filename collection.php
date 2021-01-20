@@ -16,7 +16,6 @@ $html = file_get_contents('./templates/head.html');
 $html .= file_get_contents('./templates/header.html');
 $html .= file_get_contents('./templates/searchbar.html');
 $html .= file_get_contents("./templates/zoekresultaten.html");
-$html .= file_get_contents('./templates/footer.html');
 
 $title = 'Mijn collectie';
 $currentURL = $_SERVER['REQUEST_URI'];
@@ -45,7 +44,18 @@ $template = file_get_contents("templates/zoekresultaten-kolom.html");
 //merge
 $output = MergeViewWithData($template, $data);
 $html = str_replace("%searchresult%", $output, $html);
+
+// print  tekstje als er nog geen albums aanwezig zijn
+if (empty($data)){
+    $html .= "<h2 class='empty-collection'> U heeft nog geen albums in uw collectie. </h2>";
+}
+
+// voeg footer toe
+$html .= file_get_contents('./templates/footer.html');
+
 print $html;
+
+
 
 
 
