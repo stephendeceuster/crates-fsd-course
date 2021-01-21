@@ -16,7 +16,6 @@ if (isset($_GET['search'])) {
     $result= $_GET['search'];
 }
 $results = explode(" ", $result);
-var_dump($results);
 
 // str replace zoekresultaat
 $html .= file_get_contents("./templates/zoekresultaten.html");
