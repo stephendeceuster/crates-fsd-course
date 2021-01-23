@@ -1,20 +1,11 @@
 <?php
 
-error_reporting( E_ALL );
-ini_set( 'display_errors', 1 );
+//error_reporting( E_ALL );
+//ini_set( 'display_errors', 1 );
 
 // Haalt de formules binnen
 require_once "lib/autoload.php";
 
-<<<<<<< Updated upstream
-// Model : get data
-$title = 'Crates | Login';
-
-// View : get login template
-$html = file_get_contents('./templates/head.html');
-$html .= file_get_contents('./templates/index.html');
-$html .= file_get_contents('./templates/footer.html');
-=======
 
 // MODEL - data
 $title = 'Log in';
@@ -42,7 +33,6 @@ $html = str_replace("%message%", $message, $html);
 $html = MergeViewWithData( $html, $data );
 $html = MergeViewWithExtraElements( $html, $extra_elements );
 
->>>>>>> Stashed changes
 
 // Controller : merge & print html
 $html = str_replace("title%", $title, $html);

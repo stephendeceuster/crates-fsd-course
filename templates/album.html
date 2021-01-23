@@ -1,51 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>%art_naam% - %alb_naam%</title>
-
-</head>
-<body>
-<header>
-    <img src="./assets/img/crates-logo.svg" alt="" class="logo">
-    <nav>
-        <ul>
-            <li><a href="result.php">Vind platen</a></li>
-            <li><a href="collection.php">Mijn collectie</a></li>
-            <li><a href="wishlist.php">Mijn wishlist</a></li>
-            <li><a href="#">Mijn vrienden</a></li>
-            <li><a href="#">Mijn profiel</a></li>
-        </ul>
-    </nav>
-</header>
-<div class="album">
-    <a href="#"><img src="./assets/uploads/%alb_img%" alt="" class="album-cover"></a>
-    <a href="#">
+    <div class="album">
+        <img src="./assets/uploads/%alb_img%" alt="%alb_naam% - %art_naam%" class="album-cover">
         <h2 class="album-title">%alb_naam%</h2>
-    </a>
-    <a href="#">
-        <h3 class="album-artist">%art_naam%</h3>
-    </a>
-    <a href="#">
+        
+        <a href="#">
+            <h3 class="album-artist">%art_naam%</h3>
+        </a>
         <h3 class="album-genre">%gen_naam%</h3>
-    </a>
-</div>
-<div class="buttons">
-    %button-collectie%
-    %button-wishlist%
-</div>
-<div class="songs">
-    <h2>Songs</h2>
-    %songs%
-</div>
-<div class="andere_albums">
-    %albums%
-</div>
 
+    </div>
+    <div class="buttons">
+        %button-collectie%
+        %button-wishlist%
+    </div>
+    <div class="comments">
+        %rating%
+        %comments%
+    </div>
 
+    <div class="songs ">
+        <h2>Songs</h2>
+        <ol>
+        %songs% <!-- in geen songs -->
+        </ol>
+        <a href="songs.php">Songs toevoegen/aanpassen</a>
 
-
-
-
-
-
+    </div>
+    <div class="andere_albums">
+        %albums%
+    </div>

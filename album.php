@@ -1,6 +1,6 @@
 <?php
-error_reporting( E_ALL );
-ini_set( 'display_errors', 1 );
+//error_reporting( E_ALL );
+//ini_set( 'display_errors', 1 );
 
 require_once "lib/autoload.php";
 
@@ -18,7 +18,12 @@ $query .= "where alb_id = " . $_GET['alb_id'] ;
 $data = GetData($query);
 
 //get template
-$template = file_get_contents("templates/album.html");
+$template = file_get_contents("templates/head.html");
+$template .= file_get_contents("templates/header.html");
+$template .= file_get_contents("templates/searchbar.html");
+$template .= file_get_contents("templates/album.html");
+$template .= file_get_contents("templates/footer.html");
+$template = str_replace('%title%', '%alb_naam% - %art_naam%', $template);
 
 //merge
 $html = MergeViewWithData($template, $data);
@@ -28,14 +33,26 @@ $html = MergeViewWithData($template, $data);
 //---------------------------------------------------------------------------------------
 
 // Bepaalt of een album al in user_albums is opgenomen
-$queryLisID = 'SELECT inh_lis_id FROM user_album WHERE inh_alb_id = ' . $_GET['alb_id'];
+$sql = "select use_id from user ";
+$sql .= "where use_email = '" . $_SESSION['user']['use_email'] . "'";
+
+// use_id
+$id = GetData($sql);
+
+// use_lis_id
+$queryLisID = "SELECT inh_lis_id FROM user_album ";
+$queryLisID .= "WHERE inh_alb_id = " . $_GET['alb_id'];
+$queryLisID .= " AND inh_use_id = " . $id[0]['use_id'];
 $result = GetData($queryLisID);
 
+//CSRF
 $CSRF = GenerateCSRF("album.php");
+
+//use_list 1, 2 of 0
 
 if ($result[0]['0'] == 1) {
    //=>tekst 'in collectie';
-    $html = str_replace("%button-collectie%", "<h2>In Collectie</h2>", $html);
+    $html = str_replace("%button-collectie%", "<h4 class='in-collection'>In Collectie</h4>", $html);
     $html = str_replace("%button-wishlist%", "", $html);
 } elseif ($result[0]['0'] == 0) {
     //=> album krijgt 2 knoppen
@@ -61,7 +78,7 @@ if ($result[0]['0'] == 1) {
     $output = str_replace("%alb_id%", $_GET['alb_id'], $template);
     $output = str_replace("%art_id%", $_GET['art_id'], $output);
     $output = str_replace("%csrf_token%", $CSRF , $output);
-    $html = str_replace("%button-wishlist%", "<h2>In Wishlist</h2>", $html);
+    $html = str_replace("%button-wishlist%", "<h4 class='in-wishlist'>In Wishlist</h4>", $html);
     $html = str_replace("%button-collectie%", $output, $html);
 }
 
@@ -86,8 +103,9 @@ $html = str_replace("%songs%", $output2, $html);
 
 $query3 = "select * from album ";
 $query3 .= "left join artist on alb_art_id = art_id ";
-$query3 .= "where art_id = " . $_GET['art_id'] ;
+$query3 .= "where art_id = " . $data[0]['art_id'] ;
 $query3 .= " and alb_id  != " . $_GET['alb_id'];
+
 
 //get data
 $data3 = GetData($query3);

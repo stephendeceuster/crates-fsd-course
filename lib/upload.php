@@ -1,22 +1,22 @@
 <?php
-<<<<<<< Updated upstream
 
-=======
 // display errors
 //error_reporting( E_ALL );
 //ini_set( 'display_errors', 1 );
 $public_access = false;
->>>>>>> Stashed changes
+
 // load library once
 require_once "autoload.php";
 
-var_dump($_POST);
-$message = ''; 
+ 
 
-//check if users comes from update-db form
-if (!isset($_POST['uploadBtn']) && $_POST['uploadBtn'] != 'Maak album aan') { 
-    // if not from form -> stop & send to other page.
-}
+if ( $_SERVER['REQUEST_METHOD'] == "POST" ) {
+
+//controle CSRF token
+if ( ! key_exists("csrf", $_POST)) die("Missing CSRF");
+if ( ! hash_equals( $_POST['csrf'], $_SESSION['lastest_csrf'] ) ) die("Problem with CSRF");
+
+$_SESSION['lastest_csrf'] = "";
 
 // get artist from form & check if already in database.
 $art_naam = htmlspecialchars(ucwords(strtolower($_POST['art_naam'])),  ENT_QUOTES); // Naam moet nog verder opgekuisd worden?
@@ -27,15 +27,39 @@ $data = GetData($artsql);
 if (!$data) {
     $sql = "INSERT INTO artist (art_naam) VALUES ('" . $art_naam . "')";
     $result = ExecuteSQL( $sql );
-    $art_id = ExecuteSQL( 'SELECT LAST_INSERT_ID()')[0]['art_id'];
+    $art_id = GetData($artsql)[0]['art_id'];
 } else {
     $art_id = $data[0]['art_id'];
 }
 
 // get data from rest of form
-$albumnaam = $_POST['alb_naam'];
+$albumnaam = htmlspecialchars(ucwords(strtolower($_POST['alb_naam'])),  ENT_QUOTES);
+$albumyear = $_POST['alb_releaseyear'];
+$albumgenre = $_POST['alb_gen_id'];
+
+// CHECK IF ARTIST ID ALREADY HAS THIS ALBUM IN DATABASE!!
+$checkAlbum = getData("SELECT * FROM album WHERE alb_naam='" . $albumnaam . "' AND alb_art_id=" . $art_id);
+
+if (count($checkAlbum) > 0) {
+  // album already in db
+  $_SESSION['message'] = 'Dit album is al aanwezig in de catalogus. Indien er fouten staan, kan je deze hier aanpassen.';
+  header('Location : ./../album?alb_id='. $checkAlbum[0]['alb_id'] .'&art_id=5' . $checkAlbum[0]['alb_art_id']);
+  //exit();
+} else {
+  // album needs to be created.
+  // create sql to insert formdata to database
+$albsql = "INSERT INTO album (alb_naam, alb_art_id, alb_releaseyear, alb_gen_id) VALUES ('" . $albumnaam . "', " .  $art_id . ", " . $albumyear . ", " . $albumgenre . ")";
+$result = ExecuteSQL( $albsql );
 
 
+
+// get new album id
+$albsql = "SELECT alb_id FROM album WHERE alb_naam='" . $albumnaam . "' AND alb_art_id=" . $art_id;
+$alb_id = GetData($albsql)[0]['alb_id'];
+
+
+// get data from rest of form
+//$albumnaam = $_POST['alb_naam'];
 
 
 if (isset($_FILES['alb_img']) && $_FILES['alb_img']['error'] === UPLOAD_ERR_OK)
@@ -49,7 +73,7 @@ if (isset($_FILES['alb_img']) && $_FILES['alb_img']['error'] === UPLOAD_ERR_OK)
     $fileExtension = strtolower(end($fileNameCmps));
 
     // sanitize file-name
-    $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
+    $newFileName = $alb_id . '-' . str_replace(' ', '-' ,strtolower($albumnaam)) . '.' . $fileExtension;
 
     // check if file has one of the following extensions
     $allowedfileExtensions = array('jpg', 'gif', 'png', 'jpeg');
@@ -62,27 +86,33 @@ if (isset($_FILES['alb_img']) && $_FILES['alb_img']['error'] === UPLOAD_ERR_OK)
 
       if(move_uploaded_file($fileTmpPath, $dest_path)) 
       {
-        $message ='File is successfully uploaded.';
+        $imgsql = "UPDATE album SET alb_img = '" . $newFileName . "' WHERE alb_id = " . $alb_id;
+        ExecuteSQL($imgsql);
+        // check if Execute was succesfull en change message
+        $_SESSION['message'] ='File is successfully uploaded.';
+        
       }
       else 
       {
-        $message = 'There was some error moving the file to upload directory. Please make sure the upload directory is writable by web server.';
+        $_SESSION['error'] = 'There was some error moving the file to upload directory. Please make sure the upload directory is writable by web server.';
       }
     }
     else
     {
-      $message = 'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions);
+      $_SESSION['error'] = 'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions);
     }
   }
   else
   {
-    $message = 'There is some error in the file upload. Please check the following error.<br>';
-    $message .= 'Error:' . $_FILES['alb_img']['error'];
+    $_SESSION['error'] = 'There is some error in the file upload. Please check the following error.<br>';
+    $_SESSION['error'] .= 'Error:' . $_FILES['alb_img']['error'];
   }
 
-$_SESSION['message'] = $message;
+$_SESSION['post'] = $_POST;
 
-print $message;
 
-// SEND USER BACK TO FORM... ?
-// header("Location: update-db.php");
+// SEND USER TO NEW ALBUM PAGE ?
+$sendTo = "Location: ./../album.php?alb_id=" . $alb_id . "&art_id=" . $art_id;
+header($sendTo);
+}
+}
