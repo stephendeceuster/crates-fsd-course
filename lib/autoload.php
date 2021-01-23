@@ -9,7 +9,10 @@ require_once "sanitize.php";
 require_once "validate.php";
 require_once "security.php";
 
+//var_dump($_SESSION);
+
 $errors = [];
+
 
 if ( key_exists( 'errors', $_SESSION ) AND is_array( $_SESSION['errors']) )
 {

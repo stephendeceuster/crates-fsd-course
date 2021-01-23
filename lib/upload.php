@@ -1,5 +1,12 @@
 <?php
+<<<<<<< Updated upstream
 
+=======
+// display errors
+//error_reporting( E_ALL );
+//ini_set( 'display_errors', 1 );
+$public_access = false;
+>>>>>>> Stashed changes
 // load library once
 require_once "autoload.php";
 
