@@ -116,20 +116,24 @@ $html = str_replace("%songs%", $output2, $html);
 // Comments en rating
 //--------------------------------------------------------------
 
-$query4 = "select inh_rating, inh_comment from user_album ";
-$query4 .= "where inh_alb_id = " . $_GET['alb_id'];
-$query4 .= " and inh_use_id = " . $_SESSION['user']['use_id'];
+if ($result[0]['0'] > 0) {
+    $query4 = "select inh_rating, inh_comment, inh_alb_id from user_album ";
+    $query4 .= "where inh_alb_id = " . $_GET['alb_id'];
+    $query4 .= " and inh_use_id = " . $_SESSION['user']['use_id'];
 
 //get data
-$data4 = GetData($query4);
+    $data4 = GetData($query4);
 
 //get template
-$template4 = file_get_contents("templates/album_comments.html");
+    $template4 = file_get_contents("templates/album_comments.html");
 
 //merge
-$output4 = MergeViewWithData($template4, $data4);
+    $output4 = MergeViewWithData($template4, $data4);
 
-$html = str_replace("%comments%",$output4, $html);
+    $html = str_replace("%comments%", $output4, $html);
+} else{
+    $html = str_replace("%comments%", "", $html);
+}
 
 //-------------------------------------------------------------
 // Andere albums van de artiest
