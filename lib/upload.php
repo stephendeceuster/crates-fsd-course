@@ -18,7 +18,7 @@ if ( $_SERVER['REQUEST_METHOD'] == "POST" ) {
     $_SESSION['errors'][ "alb_naam_error" ] = $msg;
   }
   if (empty($_POST["art_naam"])) {
-    $msg = "Geef aub een albumnaam in.";
+    $msg = "Geef aub een artiestnaam in.";
     $_SESSION['errors'][ "art_naam_error" ] = $msg;
   }
 
