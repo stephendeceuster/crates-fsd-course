@@ -22,14 +22,6 @@ $currentURL = $_SERVER['REQUEST_URI'];
 $html = str_replace('%title%', $title, $html);
 $html = str_replace("%ZOEKTERM%", $result, $html);
 $html = str_replace("%currentURL%", $currentURL, $html);
-//print $searchbar;
-
-// Haalt de albumresultaten uit de db, volgens het het id van de user
-$sql = "select use_id from user ";
-$sql .= "where use_email = '" . $_SESSION['user']['use_email'] . "'";
-// use_id
-$id = GetData($sql);
-$id[0]['use_id'];
 
 // Sorteer via dropdown
 if ($_GET['sorting']) {
@@ -42,7 +34,7 @@ if ($_GET['sorting']) {
 $sql = "select inh_use_id, alb_naam, alb_img, art_naam,  inh_lis_id, alb_id, art_id from user_album ";
 $sql .= "left join album on inh_alb_id = alb_id ";
 $sql .= "left join artist on alb_art_id = art_id ";
-$sql .= "where inh_use_id = " . $id[0]['use_id'] . " and inh_lis_id = 1 ";
+$sql .= "where inh_use_id = " . $_SESSION['user']['use_id'] . " and inh_lis_id = 1 ";
 $sql .= "order by " . $sort . " asc ";
 $data = GetData($sql);
 //get template

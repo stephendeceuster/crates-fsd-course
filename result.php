@@ -16,6 +16,9 @@ if (isset($_GET['search'])) {
     $result= $_GET['search'];
 }
 $results = explode(" ", $result);
+if($results[0] == 'The' || $results[0] == 'the'){
+    $results[0] = 'abcdefg';
+}
 
 // str replace zoekresultaat
 $html .= file_get_contents("./templates/zoekresultaten.html");
