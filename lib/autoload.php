@@ -6,8 +6,8 @@ require_once "pdo.php";
 require_once "html_functions.php";
 require_once "form_elements.php";
 require_once "sanitize.php";
-require_once "validate.php";
 require_once "security.php";
+require_once "validate.php";
 
 $errors = [];
 
