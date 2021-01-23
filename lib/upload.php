@@ -6,7 +6,23 @@ ini_set( 'display_errors', 1 );
 // load library once
 require_once "autoload.php";
 
+<<<<<<< Updated upstream
  
+=======
+$sending_form_uri = $_SERVER['HTTP_REFERER'];
+
+if ( $_SERVER['REQUEST_METHOD'] == "POST" ) {
+
+  // check if albumnaam en artiestnaam zijn ingevuld
+  if (empty($_POST["alb_naam"])) {
+    $msg = "Geef aub een albumnaam in.";
+    $_SESSION['errors'][ "alb_naam_error" ] = $msg;
+  }
+  if (empty($_POST["art_naam"])) {
+    $msg = "Geef aub een artiestnaam in.";
+    $_SESSION['errors'][ "art_naam_error" ] = $msg;
+  }
+>>>>>>> Stashed changes
 
   if ( $_SERVER['REQUEST_METHOD'] == "POST" ) {
 
