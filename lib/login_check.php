@@ -10,11 +10,11 @@ $user = LoginCheck();
 
 if ($user) {
     $_SESSION['user'] = $user;
-    $_SESSION['message'] = "Hallo " . $user['use_voornaam'] . "!";
+    $_SESSION['message'][0] = "Hallo " . $user['use_voornaam'] . "!";
     header('location: ../collection.php');
 } else {
-    unset( $_SESSION['user'] );
-    $_SESSION['message'] = "Er is iets misgelopen met het inloggen.";
+    $_SESSION['user'] = [];
+    $_SESSION['errors']['login-error'] = "Er is iets misgelopen met het inloggen.";
     header('location: ../index.php');
 }
 

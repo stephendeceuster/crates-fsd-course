@@ -10,9 +10,12 @@ require_once "validate.php";
 require_once "security.php";
 require_once "access_control.php";
 
+//var_dump($_SESSION);
+
 $errors = [];
 $message = [];
 $old_post = [];
+
 
 if ( key_exists( 'errors', $_SESSION ) AND is_array( $_SESSION['errors']) )
 {

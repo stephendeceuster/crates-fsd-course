@@ -2,7 +2,8 @@
 
 require_once './lib/autoload.php';
 
-if ($_SESSION['user']) {
-  unset ($_SESSION['user']);
-  header('Location: ./index.php'); exit();
-}  
+unset($_SESSION['user']);
+session_destroy();
+session_regenerate_id();
+
+header("Location: index.php?logout=true");
