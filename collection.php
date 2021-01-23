@@ -31,12 +31,19 @@ $sql .= "where use_email = '" . $_SESSION['user']['use_email'] . "'";
 $id = GetData($sql);
 $id[0]['use_id'];
 
+// Sorteer via dropdown
+if ($_GET['sorting']) {
+    $sort = $_GET['sorting'];
+}else{
+    $sort = "alb_naam";
+}
+
 //get data
 $sql = "select inh_use_id, alb_naam, alb_img, art_naam,  inh_lis_id, alb_id, art_id from user_album ";
 $sql .= "left join album on inh_alb_id = alb_id ";
 $sql .= "left join artist on alb_art_id = art_id ";
 $sql .= "where inh_use_id = " . $id[0]['use_id'] . " and inh_lis_id = 1 ";
-$sql .= "order by alb_naam asc ";
+$sql .= "order by " . $sort . " asc ";
 $data = GetData($sql);
 //get template
 $template = file_get_contents("templates/zoekresultaten-kolom.html");

@@ -1,8 +1,8 @@
 <?php
 // display errors
-//error_reporting( E_ALL );
-//ini_set( 'display_errors', 1 );
-
+error_reporting( E_ALL );
+ini_set( 'display_errors', 1 );
+$public_access = false;
 // load library once
 require_once "autoload.php";
 
@@ -42,7 +42,7 @@ if (count($checkAlbum) > 0) {
   // album already in db
   $_SESSION['message'] = 'Dit album is al aanwezig in de catalogus. Indien er fouten staan, kan je deze hier aanpassen.';
   header('Location : ./../album?alb_id='. $checkAlbum[0]['alb_id'] .'&art_id=5' . $checkAlbum[0]['alb_art_id']);
-  exit();
+  //exit();
 } else {
   // album needs to be created.
   // create sql to insert formdata to database

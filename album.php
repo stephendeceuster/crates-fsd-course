@@ -103,8 +103,9 @@ $html = str_replace("%songs%", $output2, $html);
 
 $query3 = "select * from album ";
 $query3 .= "left join artist on alb_art_id = art_id ";
-$query3 .= "where art_id = " . $_GET['art_id'] ;
+$query3 .= "where art_id = " . $data[0]['art_id'] ;
 $query3 .= " and alb_id  != " . $_GET['alb_id'];
+
 
 //get data
 $data3 = GetData($query3);

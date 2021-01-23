@@ -10,11 +10,11 @@ $user = LoginCheck();
 
 if ($user) {
     $_SESSION['user'] = $user;
-    $_SESSION['msgs'][] = "Hallo " . $user['use_voornaam'] . "!";
+    $_SESSION['message'] = "Hallo " . $user['use_voornaam'] . "!";
     header('location: ../collection.php');
 } else {
     unset( $_SESSION['user'] );
-    $_SESSION['msgs'][] = "Er is iets misgelopen met het inloggen.";
+    $_SESSION['message'] = "Er is iets misgelopen met het inloggen.";
     header('location: ../index.php');
 }
 
@@ -43,7 +43,7 @@ function LoginCheck()
         
         if (password_verify($pw , $data[0]['use_password'] )){
             return $data[0];
-        }
+        } 
     }
     return NULL;
 }

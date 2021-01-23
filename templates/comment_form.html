@@ -1,0 +1,39 @@
+<h1>Upload een album</h1>
+    <form id="updatecomment" name="updatecomment" action="./lib/save.php" method="POST" >
+
+        <!-- meta info -->
+        <!-- <input type="hidden" id="table" name="table" value="images"> -->
+        <!-- <input type="hidden" id="pkey" name="pkey" value="img_id"> -->
+        <!-- <input type="hidden" id="afterinsert" name="afterinsert" value="steden.php"> -->
+        <!-- <input type="hidden" id="afterupdate" name="afterupdate" value="steden.php"> -->
+        <!-- end meta info -->
+
+        <!--security-->
+        <input type="hidden" name="csrf" value="%csrf_token%">
+        <!--end security-->
+
+        <div class="form-group">
+            <label for="inh_rating">Rating</label>
+            <input type="number" id="inh_rating" name="inh_rating" min="0" max="5" step="1" />
+            <!--%art_naam_error%-->
+        </div>
+
+        <div class="form-group">
+            <label for="alb_genre">Genre</label>
+            <div class="custom-select" style="width:100%;">
+                %selectGenre%
+            </div>
+            <!--%art_naam_error%-->
+        </div>
+
+        <div class="form-group">
+            <label for="alb_img">Kies albumcover</label>
+            <input type="file" id="alb_img" name="alb_img">
+            <!--%alb_img_error%-->
+        </div>
+
+        <div>
+            <button type='submit'>Maak album aan</button>
+        </div>
+
+    </form>

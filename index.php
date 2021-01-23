@@ -16,6 +16,10 @@ $data = [ 0 => [ "use_email" => "", "use_password" => "" ]];
 //get template
 $html .= file_get_contents("templates/index.html");
 
+var_dump($message);
+
+
+
 //add extra elements
 $extra_elements['csrf_token'] = GenerateCSRF( "index.php"  );
 
