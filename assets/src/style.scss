@@ -2,7 +2,7 @@
 @use './base/fonts';
 @use './base/variables' as *;
 @use './base/mixins' as *;
-@import "./../../icons/style.css";
+@import url("./../icons/style.css");
 
 body {
   background-color: $white;
@@ -10,6 +10,10 @@ body {
   font-family: $sourcesans;
   font-size: 1.05rem;
   display: flex;
+}
+
+.hidden {
+  display: none;
 }
 
 // Typography
@@ -34,8 +38,13 @@ p {
 }
 
 a {
-  color: $clr3;
+  color: $clr2;
   font-weight: 700;
+  text-decoration: none;
+  transition: all 400ms ease;
+  &:hover {
+    color: $clr3;
+  }
 }
 
 // form elements
@@ -44,7 +53,6 @@ label {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
   display: block;
-
 }
 input {
   width: 100%;
@@ -56,6 +64,8 @@ input {
   padding-right: 1rem;
   color: $clr1;
   font-size: 1.25rem;
+  font-style: italic;
+  font-weight: 400;
   outline: none;
   background-color: $clr4;
   &::placeholder {
@@ -144,7 +154,8 @@ form.main-search {
     color: $white;
     border: 1px solid $clr2;
     border-radius: 2px;
-    font-size: 2rem;
+    font-size: 2.15rem;
+    padding: 0;
     &:hover {
       background-color: $clr3;
     }
@@ -155,17 +166,16 @@ form.main-search {
 div.search-results {
   display: flex;
   flex-wrap: wrap;
-  @include make-col(3, 2rem);
-  .album a {
-    text-decoration: none;
-    color: $clr2;
-    &:hover {
-      color: $clr3;
-    }
+  @include make-col(4, 2rem);
+  .album {
     img {
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
       border-radius: 2px;
       box-shadow: 0 1px 2px $clr1;
+      transition: all 400ms ease;
+    }
+    &:hover img {
+      transform: scale(1.025) rotate(3deg);
     }
     .album-title {
       font-size: 1.25rem;
@@ -179,6 +189,18 @@ div.search-results {
       margin-bottom: 1.5rem;
       padding-left: 0.25rem;
     }
+  }
+}
+
+@media screen and (max-width: 70em) {
+  div.search-results {
+    @include make-col(3, 2rem);
+  }
+}
+
+@media screen and (max-width: 55em) {
+  div.search-results {
+    @include make-col(2, 2rem);
   }
 }
 
@@ -221,12 +243,89 @@ div.login {
 
 // album page
 main.album-page {
-  .album-cover{
+  .album-cover {
     float: right;
     width: 45%;
   }
   .buttons {
     float: right;
     width: 45%;
+  }
+}
+
+// Custom Select
+/* The container must be positioned relative: */
+.custom-select {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+  background-color: $clr2;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 18px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: $white transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent $white transparent;
+  top: 14px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,
+.select-selected {
+  color: #ffffff;
+  padding: 13px 16px;
+  border: 1px solid $clr1;
+  border-radius: 2px;
+  border-color: transparent transparent $clr1 transparent;
+  cursor: pointer;
+  height: 42px;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: $clr3;
+  //top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover,
+.same-as-selected {
+  background-color: $clr2;
+}
+
+div.sort form {
+  display: flex;
+  margin-bottom: 0.5rem;
+  label,
+  div.custom-select {
+    margin-right: 1rem;
+  }
+  label {
+    padding-top: 10px;
   }
 }

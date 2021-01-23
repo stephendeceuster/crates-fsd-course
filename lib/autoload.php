@@ -8,8 +8,13 @@ require_once "form_elements.php";
 require_once "sanitize.php";
 require_once "security.php";
 require_once "validate.php";
+require_once "access_control.php";
+
 
 $errors = [];
+$message = [];
+$old_post = [];
+
 
 if ( key_exists( 'errors', $_SESSION ) AND is_array( $_SESSION['errors']) )
 {
@@ -21,4 +26,10 @@ if ( key_exists( 'message', $_SESSION ) AND is_array( $_SESSION['message']) )
 {
     $message = $_SESSION['message'];
     $_SESSION['message'] = null;
+}
+
+if ( key_exists( 'old_post', $_SESSION ) AND is_array( $_SESSION['old_post']) )
+{
+    $old_post = $_SESSION['old_post'];
+    $_SESSION['old_post'] = null;
 }

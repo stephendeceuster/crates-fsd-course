@@ -1,0 +1,41 @@
+<div class='login'>
+    <div class='inlog-form'>
+        <img class='logo' src="./assets/img/crates-logo.svg" alt="Crates logo">
+        <form id="login" name="login" method="POST" action="./lib/save.php">
+            <!-- meta info -->
+            <input type="hidden" id="table" name="table" value="user">
+            <input type="hidden" id="pkey" name="pkey" value="use_id">
+            <input type="hidden" id="afterinsert" name="afterinsert" value="index.php">
+            <!-- end meta info -->
+
+            <!--security-->
+            <input type="hidden" name="csrf" value="%csrf_token%">
+            <!--end security-->
+
+            <h2>Registreer</h2>
+            <div class="form-group">
+                <label for="use_voornaam">Voornaam</label>
+                <input type="text" name="use_voornaam" id="use_voornaam" value="%use_voornaam%">
+                %use_voornaam_error%
+            </div>
+            <div class="form-group">
+                <label for="use_naam">Naam</label>
+                <input type="text" name="use_naam" id="use_naam" value="%use_naam%">
+                %use_naam_error%
+            </div>
+            <div class="form-group">
+                <label for="use_email">Email</label>
+                <input type="text" name="use_email" id="use_email" value="%use_email%">
+                %use_email_error%
+            </div>
+            <div class="form-group">
+                <label for="use_password">Password</label>
+                <input type="password" name="use_password" id="use_password" value="%use_password%">
+                %use_password_error%
+            </div>
+            <div class="submit">
+                <button type="submit">Registreer</button>
+            </div>
+        </form>
+    </div>
+</div>
