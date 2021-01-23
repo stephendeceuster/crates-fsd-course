@@ -33,7 +33,4 @@ $html = str_replace("%message%", $message, $html);
 $html = MergeViewWithData( $html, $data );
 $html = MergeViewWithExtraElements( $html, $extra_elements );
 
-
-// Controller : merge & print html
-$html = str_replace("title%", $title, $html);
 echo $html;
