@@ -14,4 +14,4 @@ $query .= "VALUES (" . $_SESSION['user']['use_id'] . ", " . $_POST["inh_alb_id"]
 
 $result = ExecuteSQL($query);
 
-header("Location: ../album.php?alb_id=" . $_POST["inh_alb_id"] . "&art_id=" . $_POST["art_id"]);
+header("Location: ../album.php?alb_id=" . $_POST["inh_alb_id"]);
