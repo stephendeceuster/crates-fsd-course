@@ -11,7 +11,7 @@ if ( ! is_numeric( $_GET['alb_id']) ) die("Ongeldig argument " . $_GET['alb_id']
 //--------------------------------------------------------------------------------------
 
 
-$query = "select alb_id, alb_naam, art_naam, art_id, gen_naam, alb_img ";
+$query = "select alb_id, alb_naam, alb_releaseyear, art_naam, art_id, gen_naam, alb_img ";
 $query .= "from album left join artist on alb_art_id = art_id ";
 $query .= "left join genre on alb_gen_id = gen_id ";
 $query .= "where alb_id = " . $_GET['alb_id'] ;

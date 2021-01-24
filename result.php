@@ -23,11 +23,26 @@ if($results[0] == 'The' || $results[0] == 'the'){
 // str replace zoekresultaat
 $html .= file_get_contents("./templates/zoekresultaten.html");
 
+if ($result) {
+    $html = str_replace('%heading%', 'Gezocht op : %ZOEKTERM%', $html);
+} else {
+    $html = str_replace('%heading%', 'Vind een album', $html);
+}
+
 // Haalt de albumresultaten uit de db,
 // alles dus als er geen zoekopdracht wordt uitgevoerd
 $html = str_replace("%ZOEKTERM%", $result, $html);
 $currentURL = $_SERVER['REQUEST_URI'];
 $html = str_replace("%currentURL%", $currentURL, $html);
+
+//message
+if (!empty($message)) {
+    $output = file_get_contents('templates/message.html');
+    $output = str_replace('%message_text%', $message[0], $output);
+    $html = str_replace('%message%', $output, $html);
+} else {
+    $html = str_replace('%message%','', $html);
+}
 
 // Sorteer via dropdown
 if ($_GET['sorting']) {
