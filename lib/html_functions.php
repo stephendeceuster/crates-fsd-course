@@ -54,3 +54,4 @@ function RemoveEmptyErrorTags( $template, $data )
 
     return $template;
 }
+

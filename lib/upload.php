@@ -12,6 +12,8 @@ $sending_form_uri = $_SERVER['HTTP_REFERER'];
 
 if ( $_SERVER['REQUEST_METHOD'] == "POST" ) {
 
+  
+
   // check if albumnaam en artiestnaam zijn ingevuld
   if (empty($_POST["alb_naam"])) {
     $msg = "Geef aub een albumnaam in.";
@@ -63,7 +65,8 @@ if ( $_SERVER['REQUEST_METHOD'] == "POST" ) {
   } else {
     // album needs to be created.
     // create sql to insert formdata to database
-    $albsql = "INSERT INTO album (alb_naam, alb_art_id, alb_releaseyear, alb_gen_id) VALUES ('" . $albumnaam . "', " .  $art_id . ", " . $albumyear . ", " . $albumgenre . ")";
+    $albsql = "INSERT INTO album (alb_naam, alb_art_id, alb_releaseyear, alb_gen_id) VALUES ('" . $albumnaam . "', " .  $art_id . ", '" . $albumyear . "', '" . $albumgenre . "')";
+    var_dump($albsql);
     $result = ExecuteSQL( $albsql );
 
     // get new album id
@@ -75,6 +78,7 @@ if ( $_SERVER['REQUEST_METHOD'] == "POST" ) {
   ImageUpload($alb_id, $albumnaam);
 
   // SEND USER TO NEW ALBUM PAGE 
+  $_SESSION['message'][0] = 'Dank je om dit album toe te voegen.';
   $sendTo = "Location: ./../album.php?alb_id=" . $alb_id;
   header($sendTo);
 }

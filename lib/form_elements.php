@@ -4,7 +4,7 @@ require_once "autoload.php";
 function MakeSelect( $fkey, $value, $sql )
 {
     $select = "<select id=$fkey name=$fkey value=$value>";
-    $select .= "<option value='0'></option>";
+    $select .= "<option value='0'>Maak een keuze</option>";
 
     $data = GetData($sql);
 

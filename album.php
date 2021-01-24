@@ -26,8 +26,17 @@ $template .= file_get_contents("templates/album.html");
 $template .= file_get_contents("templates/footer.html");
 $template = str_replace('%title%', '%alb_naam% - %art_naam%', $template);
 
+if (!empty($message)) {
+    $output = file_get_contents('templates/message.html');
+    $output = str_replace('%message_text%', $message[0], $output);
+    $template = str_replace('%message%', $output, $template);
+} else {
+    $template = str_replace('%message%','', $template);
+}
+
 //merge
 $html = MergeViewWithData($template, $data);
+
 
 //---------------------------------------------------------------------------------------
 // Buttons
