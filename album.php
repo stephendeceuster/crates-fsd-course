@@ -28,6 +28,13 @@ $template = str_replace('%title%', '%alb_naam% - %art_naam%', $template);
 
 //merge
 $html = MergeViewWithData($template, $data);
+if (count($message) > 0) {
+    $output = file_get_contents('./templates/message.html');
+    $output = str_replace('%message_text%', $message[0], $output);
+    $template = str_replace('%message%', $output, $template);
+} else {
+    $template = str_replace('%message','', $template);
+}
 
 //---------------------------------------------------------------------------------------
 // Buttons
