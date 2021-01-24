@@ -62,4 +62,5 @@ if ( $_SERVER['REQUEST_METHOD'] == "POST" ) {
 
     $result = ExecuteSQL( $resultsql );
 }
+$_SESSION['message'][0] = 'Albuminfo aangepast!';
 header("Location: ../album.php?alb_id=" . $_POST["alb_id"]);
