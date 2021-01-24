@@ -1,0 +1,26 @@
+<h1>Laad hier een nieuwe coverfoto in</h1>
+
+<h2>%alb_naam% - %art_naam%</h2>
+
+<form id="upload_img" name="upload_img" action="./lib/upload_img.php" method="POST" enctype="multipart/form-data">
+
+    <!-- meta info -->
+    <input type="hidden" id="alb_id" name="alb_id" value="%alb_id%">
+    <input type="hidden" id="alb_naam" name="alb_naam" value="%alb_naam%">
+    <!-- end meta info -->
+
+    <!--security-->
+    <input type="hidden" name="csrf" value="%csrf_token%">
+    <!--end security-->
+
+    <div class="form-group">
+        <label for="alb_img">Kies albumcover</label>
+        <input type="file" id="alb_img" name="alb_img">
+    </div>
+
+    <div>
+        <button type='submit'>Upload nieuwe foto</button>
+    </div>
+
+</form>
+<p><a href="%sending_form_uri%">Keer terug zonder wijziging.</a></p>

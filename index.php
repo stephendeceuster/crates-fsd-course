@@ -1,28 +1,38 @@
 <?php
-//error_reporting(E_ALL);
-//ini_set('display_errors', 1);
+//error_reporting( E_ALL );
+//ini_set( 'display_errors', 1 );
 
 $public_access = true;
+//error_reporting( E_ALL );
+//ini_set( 'display_errors', 1 );
 
 // Haalt de formules binnen
 require_once "lib/autoload.php";
 
+// MODEL - data
 $title = 'Log in';
-$html = file_get_contents('./templates/head.html');
-
 
 $data = [ 0 => [ "use_email" => "", "use_password" => "" ]];
 
-//get template
-$html .= file_get_contents("templates/index.html");
-
 //add extra elements
 $extra_elements['csrf_token'] = GenerateCSRF( "index.php"  );
+if ($errors['login-error']) {
+    $message = "<p>" . $errors['login-error'] . "</p>";
+} else {
+    $message = "";
+}
 
-//merge
-$html = str_replace("%title%", $title, $html);
-$html = MergeViewWithData( $html, $data );
-$html = MergeViewWithExtraElements( $html, $extra_elements );
+
+// VIEW - templates
+$html = file_get_contents('./templates/head.html');
+$html .= file_get_contents("templates/index.html");
 $html .= file_get_contents('./templates/footer.html');
 
-print $html;
+
+// CONTROLLER - merge & print
+$html = str_replace("%title%", $title, $html);
+$html = str_replace("%message%", $message, $html);
+$html = MergeViewWithData( $html, $data );
+$html = MergeViewWithExtraElements( $html, $extra_elements );
+
+echo $html;

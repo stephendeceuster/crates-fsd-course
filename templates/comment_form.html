@@ -1,0 +1,36 @@
+<h1>Voeg toe</h1>
+    <form id="updatecomment" name="updatecomment" action="./lib/save.php" method="POST" >
+
+        <!-- meta info -->
+        <input type="hidden" id="table" name="table" value="user_album">
+        <input type="hidden" id="pkey" name="pkey" value="inh_id">
+        <input type="hidden" id="afterinsert" name="afterinsert" value="%header%">
+        <input type="hidden" id="afterupdate" name="afterupdate" value="%header%">
+        <!-- end meta info -->
+
+        <!--security-->
+        <input type="hidden" name="csrf" value="%csrf_token%">
+        <!--end security-->
+
+        <input type="hidden" id="inh_id" name="inh_id" value="%inh_id%">
+
+        <div class="form-group">
+            <label for="inh_rating">Rating</label>
+            <input type="number" id="inh_rating" name="inh_rating" value="%inh_rating%" min="0" max="5" step="1" />
+        </div>
+
+        <!--<div class="form-group">
+            <label for="alb_genre">Genre</label>
+            <div class="custom-select" style="width:100%;">
+                %selectGenre%
+            </div>
+        </div>-->
+
+        <div class="form-group">
+            <label for="inh_comment">Commentaar</label>
+            <input type="text" id="inh_comment" name="inh_comment" value="%inh_comment%">
+        </div>
+        <div>
+            <button type='submit'>Pas aan</button>
+        </div>
+    </form>

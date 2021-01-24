@@ -53,7 +53,6 @@ label {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
   display: block;
-
 }
 input {
   width: 100%;
@@ -155,7 +154,8 @@ form.main-search {
     color: $white;
     border: 1px solid $clr2;
     border-radius: 2px;
-    font-size: 2rem;
+    font-size: 2.15rem;
+    padding: 0;
     &:hover {
       background-color: $clr3;
     }
@@ -182,7 +182,6 @@ div.search-results {
       font-weight: 700;
       margin-bottom: 0.25rem;
       padding-left: 0.25rem;
-      
     }
     .album-artist {
       font-style: italic;
@@ -220,6 +219,7 @@ div.login {
     padding: 3rem 2rem;
     width: 90%;
     max-width: 30rem;
+    border-radius: 2px;
     .logo {
       width: 90%;
       max-width: 15rem;
@@ -244,7 +244,7 @@ div.login {
 
 // album page
 main.album-page {
-  .album-cover{
+  .album-cover {
     float: right;
     width: 45%;
   }
@@ -253,7 +253,6 @@ main.album-page {
     width: 45%;
   }
 }
-
 
 // Custom Select
 /* The container must be positioned relative: */
@@ -289,7 +288,8 @@ main.album-page {
 }
 
 /* style the items (options), including the selected item: */
-.select-items div,.select-selected {
+.select-items div,
+.select-selected {
   color: #ffffff;
   padding: 13px 16px;
   border: 1px solid $clr1;
@@ -314,7 +314,8 @@ main.album-page {
   display: none;
 }
 
-.select-items div:hover, .same-as-selected {
+.select-items div:hover,
+.same-as-selected {
   background-color: $clr2;
 }
 
@@ -328,17 +329,19 @@ div.sort form {
   label {
     padding-top: 10px;
   }
-<<<<<<< Updated upstream
-=======
+
 }
 
 // Messages
 div.message {
+
   padding: 0.5rem 1rem;
+
   font-style: italic;
   border: 1px solid $clr1;
   border-radius: 2px;
   background-color: $lightgrey;
+
   margin-bottom: 1rem;
   p {
     font-size: 1.25rem;
@@ -387,5 +390,4 @@ div.message {
       }
     }
   }
->>>>>>> Stashed changes
 }

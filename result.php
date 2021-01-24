@@ -12,9 +12,14 @@ $html .= file_get_contents('./templates/searchbar.html');
 
 // Haalt zoekresultaat uit form
 $result = '';
-if ($_GET['search']) {
+if (isset($_GET['search'])) {
     $result= $_GET['search'];
 }
+$results = explode(" ", $result);
+if($results[0] == 'The' || $results[0] == 'the'){
+    $results[0] = 'abcdefg';
+}
+
 // str replace zoekresultaat
 $html .= file_get_contents("./templates/zoekresultaten.html");
 
@@ -34,7 +39,10 @@ if ($_GET['sorting']) {
 //get data
 $sql = "select * from album ";
 $sql .= "left join artist on alb_art_id = art_id ";
-$sql .= "where art_naam like '%$result%' or alb_naam like '%$result%' ";
+$sql .= "where art_naam like '%$results[0]%' or alb_naam like '%$results[0]%' ";
+if (count($results) > 1 ){
+    $sql .= "or art_naam like '%$results[1]%' or alb_naam like '%$results[1]%' ";
+}
 $sql .= "order by " . $sort . " asc ";
 
 $data = GetData($sql);
