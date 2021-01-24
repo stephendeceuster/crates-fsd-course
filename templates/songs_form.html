@@ -1,0 +1,46 @@
+<form id="updateform" name="updateform" action="./lib/upload.php" method="POST" enctype="multipart/form-data">
+
+    <!-- meta info -->
+    <!-- <input type="hidden" id="table" name="table" value="images"> -->
+    <!-- <input type="hidden" id="pkey" name="pkey" value="img_id"> -->
+    <!-- <input type="hidden" id="afterinsert" name="afterinsert" value="steden.php"> -->
+    <!-- <input type="hidden" id="afterupdate" name="afterupdate" value="steden.php"> -->
+    <!-- end meta info -->
+
+    <!--security-->
+    <input type="hidden" name="csrf" value="%csrf_token%">
+    <!--end security-->
+
+    %songs%
+
+    <h2>Nieuwe nummers</h2>
+
+    <div class="form-group">
+        <label for="son_title"></label>
+        <input type="text" id="son_title" name="son_title" >
+    </div>
+
+    <div class="form-group">
+        <label for="son_title"></label>
+        <input type="text" id="son_title" name="son_title" >
+    </div>
+
+    <div class="form-group">
+        <label for="son_title"></label>
+        <input type="text" id="son_title" name="son_title" >
+    </div>
+
+    <div class="form-group">
+        <label for="son_title"></label>
+        <input type="text" id="son_title" name="son_title" >
+    </div>
+
+    <div class="form-group">
+        <label for="son_title"></label>
+        <input type="text" id="son_title" name="son_title" >
+    </div>
+
+    <div>
+        <button type='submit'>Voeg nummers toe</button>
+    </div>
+</form>
