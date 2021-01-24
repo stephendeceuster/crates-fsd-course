@@ -24,6 +24,15 @@ $html = str_replace('%title%', $title, $html);
 $html = str_replace("%ZOEKTERM%", $result, $html);
 $html = str_replace("%currentURL%", $currentURL, $html);
 
+// wishlist
+if (!empty($message)) {
+    $output = file_get_contents('templates/message.html');
+    $output = str_replace('%message_text%', $message[0], $output);
+    $html = str_replace('%message%', $output, $html);
+} else {
+    $html = str_replace('%message%','', $html);
+}
+
 // Sorteer via dropdown
 if ($_GET['sorting']) {
     $sort = $_GET['sorting'];
