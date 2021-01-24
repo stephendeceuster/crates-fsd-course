@@ -183,6 +183,11 @@ a:hover {
   color: #256B71;
 }
 
+.icon-span {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
 label {
   font-weight: 700;
   font-size: 1.2rem;
@@ -261,7 +266,7 @@ main {
 form.main-search {
   width: 100%;
   display: flex;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 form.main-search input {
   width: calc(100% - 3rem);
@@ -484,7 +489,7 @@ div.message {
   font-style: italic;
   border: 1px solid #112627;
   border-radius: 2px;
-  background-color: #bebebe;
+  background-color: #e7e8e8;
   margin-bottom: 1rem;
 }
 div.message p {
@@ -561,6 +566,7 @@ div.message p {
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: flex-start;
+  margin-bottom: 1.5rem;
 }
 .album-body > div {
   width: 45%;

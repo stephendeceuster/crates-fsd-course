@@ -48,6 +48,11 @@ a {
   }
 }
 
+.icon-span {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
 // form elements
 label {
   font-weight: 700;
@@ -128,7 +133,7 @@ main {
 form.main-search {
   width: 100%;
   display: flex;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   input {
     width: calc(100% - 3rem);
     height: 2.5rem;
@@ -418,6 +423,7 @@ div.message {
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: flex-start;
+  margin-bottom: 1.5rem;
   > div {
     width: 45%;
     font-size: 1rem;
