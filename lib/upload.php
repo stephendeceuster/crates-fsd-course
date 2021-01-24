@@ -75,6 +75,7 @@ if ( $_SERVER['REQUEST_METHOD'] == "POST" ) {
   ImageUpload($alb_id, $albumnaam);
 
   // SEND USER TO NEW ALBUM PAGE 
+  $_SESSION['message'][0] = 'Dank je om dit album toe te voegen.';
   $sendTo = "Location: ./../album.php?alb_id=" . $alb_id;
   header($sendTo);
 }
