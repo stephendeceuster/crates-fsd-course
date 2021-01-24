@@ -7,7 +7,7 @@
 require_once './lib/autoload.php';
 
 // MODEL : get data
-$title = 'Upload album';
+$title = 'Maak nieuw album';
 $CSRF = GenerateCSRF("update-db.php");
 $currentYear = date('Y');
 $data = [ 0 => [ "alb_naam" => "", "art_naam" => "" ]];
@@ -26,11 +26,6 @@ $datalist = MakeDatalistArtist($datalistArtistSql);
 $selectGenreSql = 'SELECT gen_id, gen_naam FROM genre ORDER BY gen_naam ASC';
 $selectGenre = MakeSelect($fkey = 'alb_gen_id', $value = '', $sql = $selectGenreSql);
 
-$datalistArtistSql = 'SELECT art_naam FROM artist ORDER BY art_naam ASC';
-$datalist = MakeDatalistArtist($datalistArtistSql);
-
-$selectGenreSql = 'SELECT gen_id, gen_naam FROM genre ORDER BY gen_naam ASC';
-$selectGenre = MakeSelect($fkey = 'alb_gen_id', $value = '', $sql = $selectGenreSql);
 
 // CONTROLLER : merge & print html
 $html = str_replace("%title%", $title, $html);
@@ -38,8 +33,8 @@ $html = str_replace('%csrf_token%', $CSRF, $html);
 $html = str_replace('%datalist%', $datalist, $html);
 $html = str_replace('%selectGenre%', $selectGenre, $html);
 $html = str_replace('%currentYear%', $currentYear, $html);
-MergeViewWithErrors( $html, $errors );
-RemoveEmptyErrorTags( $html, $data );
+$html = MergeViewWithErrors( $html, $errors );
+$html = RemoveEmptyErrorTags( $html, $data );
 
 
 echo $html;
