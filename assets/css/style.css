@@ -294,7 +294,7 @@ form.main-search button.btn-search {
   color: #ffffff;
   border: 1px solid #20484B;
   border-radius: 2px;
-  font-size: 2.15rem;
+  font-size: 2rem;
   padding: 0;
 }
 form.main-search button.btn-search:hover {
@@ -606,6 +606,9 @@ div.message p {
 }
 .album-footer .andere_albums > *:nth-child(4n+0) {
   margin-right: 0;
+}
+.album-footer .andere_albums img {
+  margin-bottom: 1rem;
 }
 .album-footer .andere_albums .album-title {
   font-size: 1.25rem;

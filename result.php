@@ -23,6 +23,12 @@ if($results[0] == 'The' || $results[0] == 'the'){
 // str replace zoekresultaat
 $html .= file_get_contents("./templates/zoekresultaten.html");
 
+if ($result) {
+    $html = str_replace('%heading%', 'Gezocht op : %ZOEKTERM%', $html);
+} else {
+    $html = str_replace('%heading%', 'Vind een album', $html);
+}
+
 // Haalt de albumresultaten uit de db,
 // alles dus als er geen zoekopdracht wordt uitgevoerd
 $html = str_replace("%ZOEKTERM%", $result, $html);

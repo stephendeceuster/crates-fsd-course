@@ -20,6 +20,7 @@ $html .= file_get_contents("./templates/zoekresultaten.html");
 $title = 'Mijn collectie';
 $currentURL = $_SERVER['REQUEST_URI'];
 $html = str_replace('%title%', $title, $html);
+$html = str_replace('%heading', $title, $html);
 $html = str_replace("%ZOEKTERM%", $result, $html);
 $html = str_replace("%currentURL%", $currentURL, $html);
 
