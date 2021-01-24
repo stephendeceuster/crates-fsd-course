@@ -1,6 +1,6 @@
 <?php
-error_reporting( E_ALL );
-ini_set( 'display_errors', 1 );
+//error_reporting( E_ALL );
+//ini_set( 'display_errors', 1 );
 require_once "autoload.php";
 
 SaveFormData();
@@ -90,13 +90,13 @@ function SaveFormData()
 
         if ( $result AND $table == "user" )
         {
-            $_SESSION['msgs'][] = "Bedankt voor uw registratie";
+            $_SESSION['message'][0] = "Bedankt voor uw registratie";
         }
 
-        //output if not redirected
-        //print $sql ;
-        //print "<br>";
-        //print $result->rowCount() . " records affected";
+        if ( $result AND $table == "user_album" )
+        {
+            $_SESSION['message'][0] = "Score/commentaar aangepast";
+        }
 
         //redirect after insert or update
         if ( $insert AND $_POST["afterinsert"] > "" ) header("Location: ../" . $_POST["afterinsert"] );
