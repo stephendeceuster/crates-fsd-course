@@ -371,6 +371,7 @@ div.login div.inlog-form {
   padding: 3rem 2rem;
   width: 90%;
   max-width: 30rem;
+  border-radius: 2px;
 }
 div.login div.inlog-form .logo {
   width: 90%;
@@ -475,6 +476,17 @@ div.sort form div.custom-select {
 }
 div.sort form label {
   padding-top: 10px;
+}
+
+div.message {
+  padding: 0.5rem;
+  font-style: italic;
+  border: 1px solid #112627;
+  border-radius: 2px;
+  background-color: #bebebe;
+}
+div.message p {
+  font-size: 1.5rem;
 }
 
 /*# sourceMappingURL=style.css.map */
