@@ -82,5 +82,3 @@ if ( $_SERVER['REQUEST_METHOD'] == "POST" ) {
   $sendTo = "Location: ./../album.php?alb_id=" . $alb_id;
   header($sendTo);
 }
-
-

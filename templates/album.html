@@ -1,32 +1,42 @@
 %message%
-<div class="album">
-    <img src="./assets/uploads/%alb_img%" alt="%alb_naam% - %art_naam%" class="album-cover">
-    <h2 class="album-title">%alb_naam%</h2>
+<div class="album-head">
+    <div class="album-head-img">
+        <img src="./assets/uploads/%alb_img%" alt="%alb_naam% - %art_naam%" class="album-cover">
+    </div>
+    <div class="album-head-info">
+        <h2 class="album-title">%alb_naam%</h2>
 
-    <a href="#">
-        <h3 class="album-artist">%art_naam%</h3>
-    </a>
-    <h3 class="album-genre">%gen_naam%</h3>
-
-</div>
-<div class="buttons">
-    %button-collectie%
-    %button-wishlist%
-    %button-delete%
-</div>
-<div class="comments">
-    %comments%
-</div>
-
-<div class="songs ">
-    <h2>Songs</h2>
-    <ol>
-        %songs%
-        <!-- in geen songs -->
-    </ol>
-    <a href="songs.php?alb_id=%alb_id%">Songs toevoegen/aanpassen</a>
+        <a href="#">
+            <h3 class="album-artist">%art_naam%</h3>
+        </a>
+        <h3 class="album-genre">%alb_releaseyear% - %gen_naam%</h3>
+        <div class="buttons">
+            %button-collectie%
+            %button-wishlist%
+            %button-delete%
+        </div>
+    </div>
 
 </div>
-<div class="andere_albums">
-    %albums%
+<div class='album-body'>
+    <div class="comments">
+        %comments%
+    </div>
+
+    <div class="songs ">
+        <h2>Songs</h2>
+        <ol>
+            %songs%
+            <!-- in geen songs -->
+        </ol>
+        <a href="songs.php?alb_id=%alb_id%">Songs toevoegen/aanpassen</a>
+
+    </div>
 </div>
+<div class="album-footer">
+    <div class="andere_albums">
+        %albums%
+    </div>
+</div>
+
+

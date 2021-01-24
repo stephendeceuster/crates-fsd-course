@@ -14,7 +14,9 @@ $CSRF = GenerateCSRF("new_image.php");
 
 $sql = "SELECT * FROM album LEFT JOIN artist ON alb_art_id = art_id WHERE alb_id = " . $_GET['alb_id'];;
 $album = GetData($sql);
-$sending_form_uri = $_SERVER['HTTP_REFERER'];
+
+$send_back = './album.php?alb_id=' . $_GET['alb_id'];
+
 $alb_naam = $album[0]['alb_naam'];
 $art_naam = $album[0]['art_naam'];
 
@@ -33,7 +35,9 @@ $html = str_replace("%alb_naam%", $alb_naam, $html);
 $html = str_replace("%art_naam%", $art_naam, $html);
 $html = str_replace('%alb_id%', $_GET['alb_id'], $html);
 $html = str_replace('%csrf_token%', $CSRF, $html);
-$html = str_replace('%sending_form_uri%', $sending_form_uri, $html);
+
+$html = str_replace('%sending_form_uri%', $send_back, $html);
+
 
 
 echo $html;
