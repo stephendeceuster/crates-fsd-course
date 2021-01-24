@@ -497,6 +497,7 @@ div.message p {
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: flex-start;
+  margin-bottom: 1.5rem;
 }
 .album-head .album-head-img {
   width: 45%;
@@ -504,6 +505,7 @@ div.message p {
 }
 .album-head .album-head-img img {
   box-shadow: 0 1px 2px #112627;
+  margin-bottom: 0.5rem;
 }
 .album-head .album-head-info {
   width: 45%;
@@ -539,6 +541,8 @@ div.message p {
 }
 .album-head .album-head-info .buttons h4 {
   font-weight: 400;
+  font-style: italic;
+  font-size: 1.25rem;
 }
 .album-head .album-head-info .buttons .delete-from {
   width: 100%;
@@ -549,6 +553,7 @@ div.message p {
   border: none;
   color: #256B71;
   padding: 0.5rem 0;
+  font-size: 1rem;
 }
 
 .album-body {
@@ -556,6 +561,51 @@ div.message p {
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: flex-start;
+}
+.album-body > div {
+  width: 45%;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+.album-body > div h2 {
+  font-size: 1.25rem;
+}
+.album-body .comments .rating .star {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: #256B71;
+  margin-right: 0.75rem;
+  font-size: 2rem;
+}
+.album-body .songs ol {
+  list-style: decimal-leading-zero;
+  font-style: italic;
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+.album-body .songs ol li {
+  margin-bottom: 0.25rem;
+}
+
+.album-footer .andere_albums {
+  display: flex;
+  flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+}
+.album-footer .andere_albums > *:nth-child(1n+0) {
+  width: calc(calc(100% - 6rem) / 4);
+  margin: 0 2rem 2rem 0;
+}
+.album-footer .andere_albums > *:nth-child(4n+0) {
+  margin-right: 0;
+}
+.album-footer .andere_albums .album-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  padding-left: 0.25rem;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -132,10 +132,8 @@ if ($result[0]['0'] > 0) {
 
 //get data
     $data4 = GetData($query4);
-    //var_dump($data4);
-//get template
-    $text = 'templates/rating/rating' . $data4[0]['inh_rating'] . '.html';
-    var_dump($text);
+
+    //get template
     $rating = file_get_contents('templates/rating/rating' . $data4[0]['inh_rating'] . '.html');
 
     $template4 = file_get_contents("templates/album_comments.html");

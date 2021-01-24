@@ -354,11 +354,13 @@ div.message {
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: flex-start;
+  margin-bottom: 1.5rem;
   .album-head-img {
     width: 45%;
     margin-left: auto;
     img {
       box-shadow: 0 1px 2px #112627;
+      margin-bottom: 0.5rem;
     }
   }
   .album-head-info {
@@ -393,6 +395,8 @@ div.message {
       }
       h4 {
         font-weight: 400;
+        font-style: italic;
+        font-size: 1.25rem;
       }
       .delete-from {
         width: 100%;
@@ -401,7 +405,8 @@ div.message {
           background: none;
           border: none;
           color: $clr3;
-          padding: 0.5rem 0; 
+          padding: 0.5rem 0;
+          font-size: 1rem;
         }
       }
     }
@@ -413,5 +418,41 @@ div.message {
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: flex-start;
-  
+  > div {
+    width: 45%;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    h2 {
+      font-size: 1.25rem;
+    }
+  }
+  .comments .rating .star {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: $clr3;
+    margin-right: 0.75rem;
+    font-size: 2rem;
+  }
+  .songs ol {
+    list-style: decimal-leading-zero;
+    font-style: italic;
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+    li {
+      margin-bottom: 0.25rem;
+    }
+  }
+}
+
+.album-footer .andere_albums {
+  display: flex;
+  flex-wrap: wrap;
+  @include make-col(4, 2rem);
+  .album-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    padding-left: 0.25rem;
+  }
 }
