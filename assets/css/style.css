@@ -576,6 +576,9 @@ div.message p {
 .album-body > div h2 {
   font-size: 1.25rem;
 }
+.album-body .comments .rating {
+  margin-bottom: 1rem;
+}
 .album-body .comments .rating .star {
   display: inline-flex;
   justify-content: center;

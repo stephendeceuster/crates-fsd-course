@@ -432,13 +432,16 @@ div.message {
       font-size: 1.25rem;
     }
   }
-  .comments .rating .star {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    color: $clr3;
-    margin-right: 0.75rem;
-    font-size: 2rem;
+  .comments .rating {
+    margin-bottom: 1rem;
+    .star {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      color: $clr3;
+      margin-right: 0.75rem;
+      font-size: 2rem;
+    }
   }
   .songs ol {
     list-style: decimal-leading-zero;
