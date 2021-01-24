@@ -499,6 +499,8 @@ div.message p {
 .album-head .album-head-img {
   width: 45%;
   margin-left: auto;
+}
+.album-head .album-head-img img {
   box-shadow: 0 1px 2px #112627;
 }
 .album-head .album-head-info {

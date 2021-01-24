@@ -329,12 +329,10 @@ div.sort form {
   label {
     padding-top: 10px;
   }
-
 }
 
 // Messages
 div.message {
-
   padding: 0.5rem 1rem;
 
   font-style: italic;
@@ -357,7 +355,9 @@ div.message {
   .album-head-img {
     width: 45%;
     margin-left: auto;
-    box-shadow: 0 1px 2px #112627;
+    img {
+      box-shadow: 0 1px 2px #112627;
+    }
   }
   .album-head-info {
     width: 45%;
