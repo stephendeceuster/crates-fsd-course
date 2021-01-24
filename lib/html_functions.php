@@ -13,9 +13,12 @@ function MergeViewWithData( $template, $data )
     {
         $output = $template;
 
-        foreach( array_keys($row) as $field )  //eerst "img_id", dan "img_title", ...
-        {
+        foreach( array_keys($row) as $field )  {//eerst "img_id", dan "img_title", ...
+          if ($field === 'alb_img' && ($row["$field"] === '' || $row["$field"] === null)) {
+            $output = str_replace("%$field%", '0-crates.jpg', $output);
+          } else {
             $output = str_replace( "%$field%", $row["$field"], $output );
+          }
         }
 
         $returnvalue .= $output;
