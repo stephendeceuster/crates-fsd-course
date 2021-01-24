@@ -22,11 +22,14 @@ $result = ExecuteSQL( $sql );
 
         if (empty($value)) continue; // als een veld leeggelaten wordt, ga verder
 
+        $value = htmlspecialchars(ucwords(strtolower($value)),  ENT_QUOTES); // zet input om
+
             $sql = "insert into songs (son_alb_id, son_title) ";
             $sql .= "values (" . $_GET['alb_id'] . ", '$value'); ";
             $result = ExecuteSQL( $sql );
             //print $sql;
         }
+
 
 // Boodschap meegeven
 $_SESSION['message'][0] = "Nummers aangepast!";
