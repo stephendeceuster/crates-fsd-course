@@ -344,6 +344,7 @@ div.message {
   margin-bottom: 1rem;
   p {
     font-size: 1.25rem;
+    margin: 0;
   }
 }
 
@@ -382,6 +383,7 @@ div.message {
       margin-bottom: 2rem;
     }
     .buttons {
+      margin-top: 1.5rem;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
@@ -389,6 +391,27 @@ div.message {
       .add-to {
         width: 45%;
       }
+      h4 {
+        font-weight: 400;
+      }
+      .delete-from {
+        width: 100%;
+        margin-top: 1rem;
+        button {
+          background: none;
+          border: none;
+          color: $clr3;
+          padding: 0.5rem 0; 
+        }
+      }
     }
   }
+}
+
+.album-body {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: flex-start;
+  
 }

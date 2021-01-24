@@ -489,6 +489,7 @@ div.message {
 }
 div.message p {
   font-size: 1.25rem;
+  margin: 0;
 }
 
 .album-head {
@@ -527,6 +528,7 @@ div.message p {
   margin-bottom: 2rem;
 }
 .album-head .album-head-info .buttons {
+  margin-top: 1.5rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -534,6 +536,26 @@ div.message p {
 }
 .album-head .album-head-info .buttons .add-to {
   width: 45%;
+}
+.album-head .album-head-info .buttons h4 {
+  font-weight: 400;
+}
+.album-head .album-head-info .buttons .delete-from {
+  width: 100%;
+  margin-top: 1rem;
+}
+.album-head .album-head-info .buttons .delete-from button {
+  background: none;
+  border: none;
+  color: #256B71;
+  padding: 0.5rem 0;
+}
+
+.album-body {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 /*# sourceMappingURL=style.css.map */
