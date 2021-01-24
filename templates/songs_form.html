@@ -1,46 +1,62 @@
-<form id="updateform" name="updateform" action="./lib/upload.php" method="POST" enctype="multipart/form-data">
-
-    <!-- meta info -->
-    <!-- <input type="hidden" id="table" name="table" value="images"> -->
-    <!-- <input type="hidden" id="pkey" name="pkey" value="img_id"> -->
-    <!-- <input type="hidden" id="afterinsert" name="afterinsert" value="steden.php"> -->
-    <!-- <input type="hidden" id="afterupdate" name="afterupdate" value="steden.php"> -->
-    <!-- end meta info -->
+<form id="songsform" name="songsform" action="%action%" method="POST" >
 
     <!--security-->
     <input type="hidden" name="csrf" value="%csrf_token%">
     <!--end security-->
 
-    %songs%
-
-    <h2>Nieuwe nummers</h2>
+    <!-- %songs% -->
 
     <div class="form-group">
-        <label for="son_title"></label>
-        <input type="text" id="son_title" name="son_title" >
+        <label for="son_nr">1</label>
+        <input type="text" id="son_1" name="son_1" ><!--value="%son_title%" -->
     </div>
 
     <div class="form-group">
-        <label for="son_title"></label>
-        <input type="text" id="son_title" name="son_title" >
+        <label for="son_nr">2</label>
+        <input type="text" id="son_2" name="son_2" >
     </div>
 
     <div class="form-group">
-        <label for="son_title"></label>
-        <input type="text" id="son_title" name="son_title" >
+        <label for="son_nr">3</label>
+        <input type="text" id="son_3" name="son_3" >
     </div>
 
     <div class="form-group">
-        <label for="son_title"></label>
-        <input type="text" id="son_title" name="son_title" >
+        <label for="son_nr">4</label>
+        <input type="text" id="son_4" name="son_4" >
     </div>
 
     <div class="form-group">
-        <label for="son_title"></label>
-        <input type="text" id="son_title" name="son_title" >
+        <label for="son_nr">5</label>
+        <input type="text" id="son_5" name="son_5" >
     </div>
 
+    <div class="form-group">
+        <label for="son_nr">6</label>
+        <input type="text" id="son_6" name="son_6" >
+    </div>
+
+    <div class="form-group">
+        <label for="son_nr">7</label>
+        <input type="text" id="son_7" name="son_7" >
+    </div>
+
+    <div class="form-group">
+        <label for="son_nr">8</label>
+        <input type="text" id="son_8" name="son_8" >
+    </div>
+
+    <div class="form-group">
+        <label for="son_nr">9</label>
+        <input type="text" id="son_9" name="son_9" >
+    </div>
+
+    <div class="form-group">
+        <label for="son_nr">10</label>
+        <input type="text" id="son_10" name="son_10" >
+    </div>
     <div>
         <button type='submit'>Voeg nummers toe</button>
     </div>
 </form>
+<a href="%return%">Ga terug naar de albumpagina</a>
