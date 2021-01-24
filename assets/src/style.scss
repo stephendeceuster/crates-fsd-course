@@ -35,6 +35,7 @@ h2 {
 
 p {
   font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
 a {
@@ -378,7 +379,7 @@ div.message {
       text-transform: uppercase;
       letter-spacing: 0.05;
       color: $clr2;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
     }
     .buttons {
       display: flex;

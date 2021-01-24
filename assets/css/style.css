@@ -170,6 +170,7 @@ h2 {
 
 p {
   font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
 a {
@@ -523,7 +524,7 @@ div.message p {
   text-transform: uppercase;
   letter-spacing: 0.05;
   color: #20484B;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 .album-head .album-head-info .buttons {
   display: flex;
