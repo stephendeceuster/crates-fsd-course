@@ -328,4 +328,64 @@ div.sort form {
   label {
     padding-top: 10px;
   }
+<<<<<<< Updated upstream
+=======
+}
+
+// Messages
+div.message {
+  padding: 0.5rem 1rem;
+  font-style: italic;
+  border: 1px solid $clr1;
+  border-radius: 2px;
+  background-color: $lightgrey;
+  margin-bottom: 1rem;
+  p {
+    font-size: 1.25rem;
+  }
+}
+
+// album page
+.album-head {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: flex-start;
+  .album-head-img {
+    width: 45%;
+    margin-left: auto;
+    box-shadow: 0 1px 2px #112627;
+  }
+  .album-head-info {
+    width: 45%;
+    margin-right: auto;
+    margin-top: 0.5rem;
+    .album-title {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .album-artist {
+      font-size: 2.5rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+    .album-genre {
+      font-weight: 400;
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05;
+      color: $clr2;
+      margin-bottom: 3rem;
+    }
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      .add-to {
+        width: 45%;
+      }
+    }
+  }
+>>>>>>> Stashed changes
 }

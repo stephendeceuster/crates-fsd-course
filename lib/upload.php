@@ -30,6 +30,7 @@ if (!$data) {
     $art_id = $data[0]['art_id'];
 }
 
+<<<<<<< Updated upstream
 // get data from rest of form
 $albumnaam = htmlspecialchars(ucwords(strtolower($_POST['alb_naam'])),  ENT_QUOTES);
 $albumyear = $_POST['alb_releaseyear'];
@@ -104,6 +105,30 @@ if (isset($_FILES['alb_img']) && $_FILES['alb_img']['error'] === UPLOAD_ERR_OK)
   {
     $_SESSION['error'] = 'There is some error in the file upload. Please check the following error.<br>';
     $_SESSION['error'] .= 'Error:' . $_FILES['alb_img']['error'];
+=======
+  // get data from rest of form
+  $albumnaam = htmlspecialchars(ucwords(strtolower($_POST['alb_naam'])),  ENT_QUOTES);
+  $albumyear = $_POST['alb_releaseyear'];
+  $albumgenre = $_POST['alb_gen_id'];
+
+  // CHECK IF ARTIST ID ALREADY HAS THIS ALBUM IN DATABASE!!
+  $checkAlbum = getData("SELECT * FROM album WHERE alb_naam='" . $albumnaam . "' AND alb_art_id=" . $art_id);
+
+  if (count($checkAlbum) > 0) {
+    // album already in db, go to album page
+    $_SESSION['message'][0] = 'Dit album is al aanwezig in de catalogus.';
+    header('Location: ./../album?alb_id='. $checkAlbum[0]['alb_id']);
+    //exit();
+  } else {
+    // album needs to be created.
+    // create sql to insert formdata to database
+    $albsql = "INSERT INTO album (alb_naam, alb_art_id, alb_releaseyear, alb_gen_id) VALUES ('" . $albumnaam . "', " .  $art_id . ", '" . $albumyear . "', '" . $albumgenre . "')";
+    $result = ExecuteSQL( $albsql );
+
+    // get new album id
+    $albsql = "SELECT alb_id FROM album WHERE alb_naam='" . $albumnaam . "' AND alb_art_id=" . $art_id;
+    $alb_id = GetData($albsql)[0]['alb_id'];
+>>>>>>> Stashed changes
   }
 
 $_SESSION['post'] = $_POST;
