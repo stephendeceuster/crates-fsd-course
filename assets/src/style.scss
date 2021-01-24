@@ -219,6 +219,7 @@ div.login {
     padding: 3rem 2rem;
     width: 90%;
     max-width: 30rem;
+    border-radius: 2px;
     .logo {
       width: 90%;
       max-width: 15rem;
@@ -327,5 +328,17 @@ div.sort form {
   }
   label {
     padding-top: 10px;
+  }
+}
+
+// Messages
+div.message {
+  padding: 0.5rem;
+  font-style: italic;
+  border: 1px solid $clr1;
+  border-radius: 2px;
+  background-color: $lightgrey;
+  p {
+    font-size: 1.5rem;
   }
 }
