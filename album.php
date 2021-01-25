@@ -35,7 +35,6 @@ if (!empty($message)) {
 }
 
 //merge
-//var_dump($data[0]);
 if ($data[0]['alb_releaseyear'] !== '0' && $data[0]['gen_naam'] !== '0' && $data[0]['gen_naam'] != NULL) {
     $jaar_genre = '<h3 class="album-genre">%alb_releaseyear% - %gen_naam%</h3>';
 } elseif ($data[0]['alb_releaseyear'] !== '0') {
