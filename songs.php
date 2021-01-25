@@ -17,7 +17,7 @@ $html = str_replace("%action%", $action, $html);
 $return = "album.php?alb_id=" . $_GET['alb_id'];
 $html = str_replace("%return%", $return, $html);
 
-//CSRF
+// CSRF
 $CSRF = GenerateCSRF("album.php");
 $html = str_replace("%csrf_token%", $CSRF , $html);
 
@@ -29,11 +29,6 @@ $query .= "where alb_id = " . $_GET['alb_id'];
 $data= GetData($query);
 
 $songs = MakeSongform( $data );
-//get template
-//$template = file_get_contents("templates/songs_form_songs.html");
-//merge
-//$output = MergeViewWithData($template, $data);
-//$output = str_replace("%son_title%", $output, $output);
 
 $html = str_replace("%songs%", $songs, $html);
 

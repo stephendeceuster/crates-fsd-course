@@ -35,6 +35,17 @@ if (!empty($message)) {
 }
 
 //merge
+//var_dump($data[0]);
+if ($data[0]['alb_releaseyear'] !== '0' && $data[0]['gen_naam'] !== '0' && $data[0]['gen_naam'] != NULL) {
+    $jaar_genre = '<h3 class="album-genre">%alb_releaseyear% - %gen_naam%</h3>';
+} elseif ($data[0]['alb_releaseyear'] !== '0') {
+    $jaar_genre = '<h3 class="album-genre">%alb_releaseyear%</h3>';
+} elseif ($data[0]['gen_naam'] !== '0' && $data[0]['gen_naam'] !== NULL) {
+    $jaar_genre = '<h3 class="album-genre">%gen_naam</h3>';
+} else {
+    $jaar_genre = '';
+}
+$template = str_replace('%jaar_genre%', $jaar_genre, $template);
 $html = MergeViewWithData($template, $data);
 
 
@@ -164,8 +175,14 @@ $data3 = GetData($query3);
 $template3 = file_get_contents("templates/album_andere_albums.html");
 
 //merge
+if (count($data3) > 0) {
+    $ander_albums_heading = "<h2>Andere albums van " . $data[0]['art_naam'] . "</h2>";
+} else {
+    $ander_albums_heading = "";
+}
 $output3 = MergeViewWithData($template3, $data3);
 $html = str_replace("%albums%", $output3, $html);
+$html = str_replace('%andere_albums_heading%', $ander_albums_heading, $html);
 
 print $html;
 

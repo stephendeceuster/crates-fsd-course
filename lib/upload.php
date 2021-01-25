@@ -1,5 +1,4 @@
 <?php
-
 // display errors
 //error_reporting( E_ALL );
 //ini_set( 'display_errors', 1 );
@@ -61,7 +60,6 @@ if ( $_SERVER['REQUEST_METHOD'] == "POST" ) {
     // album already in db, go to album page
     $_SESSION['message'][0] = 'Dit album is al aanwezig in de catalogus.';
     header('Location: ./../album?alb_id='. $checkAlbum[0]['alb_id']);
-    //exit();
   } else {
     // album needs to be created.
     // create sql to insert formdata to database

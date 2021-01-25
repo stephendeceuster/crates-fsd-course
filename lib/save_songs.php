@@ -3,7 +3,6 @@
 //ini_set( 'display_errors', 1 );
 
 require_once "autoload.php";
-//var_dump($_POST);
 
 //controle CSRF token
 if ( ! key_exists("csrf", $_POST)) die("Missing CSRF");
@@ -27,7 +26,6 @@ $result = ExecuteSQL( $sql );
             $sql = "insert into songs (son_alb_id, son_title) ";
             $sql .= "values (" . $_GET['alb_id'] . ", '$value'); ";
             $result = ExecuteSQL( $sql );
-            //print $sql;
         }
 
 
