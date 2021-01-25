@@ -90,7 +90,7 @@ function SaveFormData()
 
         if ( $result AND $table == "user" )
         {
-            $_SESSION['message'][0] = "Bedankt voor uw registratie";
+            $_SESSION['message'][0] = "Hey, " . ucwords(strtolower($_POST['use_voornaam'])) . "! <br>Bedankt voor uw registratie, <br> je kan nu hier inloggen.";
         }
 
         if ( $result AND $table == "user_album" )

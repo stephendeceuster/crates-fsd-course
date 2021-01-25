@@ -16,11 +16,6 @@ $data = [ 0 => [ "use_email" => "", "use_password" => "" ]];
 
 //add extra elements
 $extra_elements['csrf_token'] = GenerateCSRF( "index.php"  );
-if ($errors['login-error']) {
-    $message = "<p>" . $errors['login-error'] . "</p>";
-} else {
-    $message = "";
-}
 
 
 // VIEW - templates
@@ -31,7 +26,19 @@ $html .= file_get_contents('./templates/footer.html');
 
 // CONTROLLER - merge & print
 $html = str_replace("%title%", $title, $html);
-$html = str_replace("%message%", $message, $html);
+// message
+if (isset($_GET['logout']) && $_GET['logout'] === 'true') {
+    $message[0] = 'U bent uitgelogd.';
+}
+
+if (!empty($message)) {   
+    $output = file_get_contents('templates/message.html');
+    $output = str_replace('%message_text%', $message[0], $output);
+    $html = str_replace('%message%', $output, $html);
+} else {
+    $html = str_replace('%message%','', $html);
+}
+
 $html = MergeViewWithData( $html, $data );
 $html = MergeViewWithExtraElements( $html, $extra_elements );
 

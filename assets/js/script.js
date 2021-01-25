@@ -81,3 +81,22 @@ function closeAllSelect(elmnt) {
 /* If the user clicks anywhere outside the select box,
 then close all select boxes: */
 document.addEventListener("click", closeAllSelect);
+
+$(document).ready(function(){
+  $('.icon-span-clear').hide();
+	//$('nav').addClass('nav-display');
+
+	$('.icon-span-menu').click(function() {
+		$('nav').slideToggle( 'slow', function() {
+			$('.icon-span-menu').hide();
+			$('.icon-span-clear').show();
+		});
+	});
+
+	$('.icon-span-clear').click(function() {
+		$('nav').slideToggle('slow', function() {
+			$('.icon-span-clear').hide();
+			$('.icon-span-menu').show();
+		});
+  });
+}); 

@@ -92,6 +92,7 @@ button {
   padding: 0.5rem 2rem;
   -webkit-appearance: none;
   -moz-appearance: none;
+  cursor: pointer;
 }
 
 // Header
@@ -345,9 +346,16 @@ div.message {
   border: 1px solid $clr1;
   border-radius: 2px;
   background-color: $lightgrey;
-
   margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  span.icon-span {
+    width: 2rem;
+    font-size: 2.5rem;
+  }
   p {
+    width: calc(100% - 4rem);
     font-size: 1.25rem;
     margin: 0;
   }
@@ -474,13 +482,101 @@ div.message {
   display: flex;
   flex-wrap: wrap;
   @include make-col(4, 2rem);
-  img {
-    margin-bottom: 1rem;
-  }
+
   .album-title {
     font-size: 1.25rem;
     font-weight: 700;
     margin-bottom: 0.25rem;
     padding-left: 0.25rem;
+  }
+  .album {
+    img {
+      margin-bottom: 1rem;
+      border-radius: 2px;
+      box-shadow: 0 1px 2px $clr1;
+      transition: all 400ms ease;
+    }
+    &:hover img {
+      transform: scale(1.025) rotate(3deg);
+    }
+  }
+}
+
+// songsform
+form#songsform div.form-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  label {
+    width: 1.5rem;
+    text-align: right;
+    padding-bottom: 0.5rem;
+  }
+  input {
+    width: calc(100% - 2.5rem);
+  }
+}
+
+// RESPONSIVE
+span.icon-span-clear,
+span.icon-span-menu {
+  display: none;
+  color: $clr2;
+}
+
+@media screen and (max-width: 55em) {
+  body {
+    flex-direction: column;
+    header {
+      position: absolute;
+      width: 100vw;
+      z-index: 100;
+      box-shadow: 0 1px 2px #112627;
+      min-height: unset;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      img.logo {
+        margin-bottom: 0;
+        display: inline-block;
+      }
+      nav {
+        display: none;
+        margin-top: 2rem;
+        margin-bottom: -1rem;
+        width: 100%;
+      }
+      span.icon-span-clear,
+      span.icon-span-menu {
+        font-size: 2.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    main {
+      margin-top: 7rem;
+      width: 100%;
+    }
+  }
+
+  .album-head {
+    flex-direction: column;
+    .album-head-img {
+      width: 100%;
+    }
+    .album-head-info {
+      width: 100%;
+    }
+  }
+  .album-body {
+    flex-direction: column;
+    > div {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+  }
+  .album-footer .andere_albums {
+    @include make-col(2, 2rem);
   }
 }

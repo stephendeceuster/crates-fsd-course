@@ -22,7 +22,7 @@ $CSRF = GenerateCSRF("album.php");
 $html = str_replace("%csrf_token%", $CSRF , $html);
 
 
-$query = "select son_title from songs ";
+$query = "select son_title, alb_naam from songs ";
 $query .= "left join album on son_alb_id = alb_id ";
 $query .= "where alb_id = " . $_GET['alb_id'];
 
@@ -39,6 +39,7 @@ $html = str_replace("%songs%", $songs, $html);
 
 $title = "Pas Nummers aan";
 $html = str_replace("%title%", $title, $html);
+$html = str_replace('%alb_naam%', $data[0]['alb_naam'], $html);
 
 
 print $html;
