@@ -64,9 +64,9 @@ function MakeSongform( $arr ) {
     for ($i = 1; $i <= $songsNr; $i++) {
         $output .= file_get_contents('templates/songs_form_songs.html');
         $output = str_replace('%i%', $i, $output);
-        $output = str_replace('%son_title%', $arr[$i-1], $output);
+        $output = str_replace('%son_title%', $arr[$i - 1]['son_title'], $output);
     }
-    for ($i = $songNr+1; $i <= 20; $i++) {
+    for ($i = $songsNr + 1; $i <= 20; $i++) {
         $output .= file_get_contents('templates/songs_form_songs.html');
         $output = str_replace('%i%', $i, $output);
         $output = str_replace('%son_title%', '', $output);
