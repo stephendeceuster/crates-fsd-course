@@ -14,11 +14,10 @@ $html .= file_get_contents('./templates/searchbar.html');
 $result = '';
 if (isset($_GET['search'])) {
     $result= $_GET['search'];
+    $result= htmlspecialchars(ucwords(strtolower($result)));
 }
 $results = explode(" ", $result);
-if($results[0] == 'The' || $results[0] == 'the'){
-    $results[0] = 'abcdefg';
-}
+
 
 // str replace zoekresultaat
 $html .= file_get_contents("./templates/zoekresultaten.html");
@@ -51,13 +50,28 @@ if ($_GET['sorting']) {
     $sort = "alb_naam";
 }
 
+$firstResult = array_shift($results);
+
 //get data
 $sql = "select * from album ";
 $sql .= "left join artist on alb_art_id = art_id ";
-$sql .= "where art_naam like '%$results[0]%' or alb_naam like '%$results[0]%' ";
-if (count($results) > 1 ){
-    $sql .= "or art_naam like '%$results[1]%' or alb_naam like '%$results[1]%' ";
+
+if (strlen($result) > 0) {
+    $sql .= "where art_naam like '%$firstResult%' or alb_naam like '%$firstResult%' ";
+    if (count($results) > 1) {
+      foreach ($results as $result) {
+        if (strlen($result) < 2) {
+            continue;
+        } else {
+            $sql .= "or art_naam like '%$result%' or alb_naam like '%$result%' ";
+        }
+      }
+    }
 }
+if (isset($_GET['art_id'])) {
+    $sql .= "where art_id = " . $_GET['art_id'] . " ";
+}
+
 $sql .= "order by " . $sort . " asc ";
 
 $data = GetData($sql);

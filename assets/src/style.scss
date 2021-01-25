@@ -363,9 +363,25 @@ div.message {
   .album-head-img {
     width: 45%;
     margin-left: auto;
+    position: relative;
     img {
       box-shadow: 0 1px 2px #112627;
       margin-bottom: 0.5rem;
+    }
+    a.new-img-link {
+      color: $white;
+      background-color: $clr3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 1px solid $clr2;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      position: absolute;
+      bottom: 0;
+      right: -0.5rem;
     }
   }
   .album-head-info {
