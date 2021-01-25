@@ -14,8 +14,15 @@
     <!--end security-->
 
     <div class="form-group">
-        <label for="alb_img">Kies albumcover</label>
-        <input type="file" id="alb_img" name="alb_img">
+        <input type="file" id="alb_img" name="alb_img" class="fileupload" data-multiple-caption="{count} files selected">
+        <label for="alb_img">
+            <span>Kies albumcover</span>
+            <span class='icon-span-cloud_upload'>
+                <svg class="icon icon-cloud_upload">
+                    <use xlink:href="./assets/icons/symbol-defs.svg#icon-cloud_upload"></use>
+                </svg>
+            </span>
+        </label>
     </div>
 
     <div>

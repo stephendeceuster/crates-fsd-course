@@ -4,12 +4,6 @@
     <h1>Upload een album</h1>
     <form id="updateform" name="updateform" action="./lib/upload.php" method="POST" enctype="multipart/form-data">
 
-        <!-- meta info -->
-        <!-- <input type="hidden" id="table" name="table" value="images"> -->
-        <!-- <input type="hidden" id="pkey" name="pkey" value="img_id"> -->
-        <!-- <input type="hidden" id="afterinsert" name="afterinsert" value="steden.php"> -->
-        <!-- <input type="hidden" id="afterupdate" name="afterupdate" value="steden.php"> -->
-        <!-- end meta info -->
 
         <!--security-->
         <input type="hidden" name="csrf" value="%csrf_token%">
@@ -17,14 +11,12 @@
 
         <div class="form-group">
             <label for="alb_naam">Albumnaam</label>
-            <!--<input type="text" id="alb_naam" name="alb_naam" value="%alb_naam%">-->
             <input type="text" id="alb_naam" name="alb_naam">
             %alb_naam_error%
         </div>
 
         <div class="form-group">
             <label for="art_naam">Artiest</label>
-            <!--<input type="text" id="art_naam" name="art_naam" value="%art_naam%" list="artists">-->
             <input type="text" id="art_naam" name="art_naam" list="artists">
             %datalist%
             %art_naam_error%
@@ -33,7 +25,6 @@
         <div class="form-group">
             <label for="alb_releaseyear">Jaar van uitgave</label>
             <input type="number" id="alb_releaseyear" name="alb_releaseyear" min="1931" max="%currentYear%" step="1" />
-            <!--%art_naam_error%-->
         </div>
 
         <div class="form-group">
@@ -41,13 +32,18 @@
             <div class="custom-select" style="width:100%;">
                 %selectGenre%
             </div>
-            <!--%art_naam_error%-->
         </div>
 
         <div class="form-group">
-            <label for="alb_img">Kies albumcover</label>
-            <input type="file" id="alb_img" name="alb_img">
-            <!--%alb_img_error%-->
+            <input type="file" id="alb_img" name="alb_img" class="fileupload" data-multiple-caption="{count} files selected">
+            <label for="alb_img">
+                <span>Kies albumcover</span>
+                <span class='icon-span-cloud_upload'>
+                    <svg class="icon icon-cloud_upload">
+                        <use xlink:href="./assets/icons/symbol-defs.svg#icon-cloud_upload"></use>
+                    </svg>
+                </span>
+            </label>
         </div>
 
         <div>

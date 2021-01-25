@@ -1,6 +1,6 @@
 // javascript (of jQuery)
 
-// custom select
+// CUSTOM SELECT
 var x, i, j, l, ll, selElmnt, a, b, c;
 /* Look for any elements with the class "custom-select": */
 x = document.getElementsByClassName("custom-select");
@@ -78,9 +78,13 @@ function closeAllSelect(elmnt) {
   }
 }
 
+
+
 /* If the user clicks anywhere outside the select box,
 then close all select boxes: */
 document.addEventListener("click", closeAllSelect);
+
+// MOBILE NAVIGATION
 
 $(document).ready(function(){
   $('.icon-span-clear').hide();
@@ -100,3 +104,27 @@ $(document).ready(function(){
 		});
   });
 }); 
+
+
+// CUSTOM FILEUPLOAD
+
+var inputs = document.querySelectorAll( '.fileupload' );
+Array.prototype.forEach.call( inputs, function( input )
+{
+	var label	 = input.nextElementSibling,
+		labelVal = label.innerHTML;
+
+	input.addEventListener( 'change', function( e )
+	{
+		var fileName = '';
+		if( this.files && this.files.length > 1 )
+			fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+		else
+			fileName = e.target.value.split( '\\' ).pop();
+
+		if( fileName )
+			label.querySelector( 'span' ).innerHTML = fileName;
+		else
+			label.innerHTML = labelVal;
+	});
+});

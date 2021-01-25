@@ -95,6 +95,33 @@ button {
   cursor: pointer;
 }
 
+input.fileupload {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+  + label {
+    color: $clr2;
+    background-color: $clr4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 1rem;
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid $clr3;
+    border-radius: 2px;
+    .icon-span-cloud_upload {
+      font-size: 2rem;
+      margin-left: 1rem;
+    }
+  }
+}
+
 // Header
 header {
   background-color: $clr4;
