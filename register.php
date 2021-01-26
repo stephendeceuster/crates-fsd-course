@@ -7,6 +7,10 @@ $public_access = true;
 // Haalt de formules binnen
 require_once "lib/autoload.php";
 
+if (isset($_SESSION['user']['use_id'])) {
+    header("Location: ./collection.php");
+}
+
 $title = 'Registreer';
 $html = file_get_contents('./templates/head.html');
 
