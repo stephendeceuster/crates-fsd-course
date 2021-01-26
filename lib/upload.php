@@ -64,7 +64,7 @@ if ( $_SERVER['REQUEST_METHOD'] == "POST" ) {
     // album needs to be created.
     // create sql to insert formdata to database
     $albsql = "INSERT INTO album (alb_naam, alb_art_id, alb_releaseyear, alb_gen_id) VALUES ('" . $albumnaam . "', " .  $art_id . ", '" . $albumyear . "', '" . $albumgenre . "')";
-    var_dump($albsql);
+    
     $result = ExecuteSQL( $albsql );
 
     // get new album id
