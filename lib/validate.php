@@ -76,7 +76,7 @@ function ValidateUsrPassword( $password )
 {
     if ( strlen($password) < 8 )
     {
-        $_SESSION['errors']['use_password_error'] = "Het wachtwoord moet minstens 8 tekens bevatten";
+        $_SESSION['errors']['use_password_error'] = "Uw wachtwoord moet minstens 8 tekens bevatten.";
         return false;
     }
 
@@ -91,7 +91,7 @@ function ValidateUsrEmail( $email )
     }
     else
     {
-        $_SESSION['errors']['use_email_error'] = "Geen geldig e-mailadres!";
+        $_SESSION['errors']['use_email_error'] = "Geef een geldig e-mailadres.";
         return false;
     }
 }

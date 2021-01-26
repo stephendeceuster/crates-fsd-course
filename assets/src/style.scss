@@ -280,6 +280,16 @@ div.login {
   }
 }
 
+// register errors
+p.register-error {
+  color: #da0202;
+  font-size: 1.15rem;
+  font-style: italic;
+  padding-left: 0.5rem;
+  margin-top: -0.4rem;
+  margin-bottom: 1.5rem;
+}
+
 // album page
 main.album-page {
   .album-cover {
@@ -424,7 +434,7 @@ div.message {
     }
   }
   .album-head-info {
-    width: 45%;
+    width: calc(50% - 1rem);
     margin-right: auto;
     margin-top: 0.5rem;
     .album-title {
@@ -451,14 +461,14 @@ div.message {
       justify-content: space-between;
       align-items: center;
       .add-to {
-        width: 45%;
+        width: calc(50% - 0.75rem);
       }
       h4 {
         font-weight: 400;
         font-style: italic;
         font-size: 1.25rem;
         text-align: center;
-        width: 45%;
+        width: calc(50% - 0.75rem);
       }
       .delete-from {
         width: 100%;

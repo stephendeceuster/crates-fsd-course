@@ -40,7 +40,7 @@ function MergeViewWithErrors( $template, $errors )
 {
     foreach ( $errors as $key => $error )
     {
-        $template = str_replace( "%$key%", "<p style='color:red'>$error</p>", $template );
+        $template = str_replace( "%$key%", "<p class='register-error'>$error</p>", $template );
     }
     return $template;
 }

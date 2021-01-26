@@ -431,6 +431,15 @@ div.login div.inlog-form form#login button {
   height: 3rem;
 }
 
+p.register-error {
+  color: #da0202;
+  font-size: 1.15rem;
+  font-style: italic;
+  padding-left: 0.5rem;
+  margin-top: -0.4rem;
+  margin-bottom: 1.5rem;
+}
+
 main.album-page .album-cover {
   float: right;
   width: 45%;
@@ -569,7 +578,7 @@ div.message p {
   right: -0.5rem;
 }
 .album-head .album-head-info {
-  width: 45%;
+  width: calc(50% - 1rem);
   margin-right: auto;
   margin-top: 0.5rem;
 }
@@ -598,14 +607,14 @@ div.message p {
   align-items: center;
 }
 .album-head .album-head-info .buttons .add-to {
-  width: 45%;
+  width: calc(50% - 0.75rem);
 }
 .album-head .album-head-info .buttons h4 {
   font-weight: 400;
   font-style: italic;
   font-size: 1.25rem;
   text-align: center;
-  width: 45%;
+  width: calc(50% - 0.75rem);
 }
 .album-head .album-head-info .buttons .delete-from {
   width: 100%;

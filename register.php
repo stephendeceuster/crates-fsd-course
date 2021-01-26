@@ -16,11 +16,12 @@ if ( !empty($old_post) )
         "use_voornaam" => $old_post['use_voornaam'],
         "use_naam" => $old_post['use_naam'],
         "use_email" => $old_post['use_email'],
-        "use_password" => $old_post['use_password']
-    ]
+        "use_password" => $old_post['use_password'],
+        "use_password2" => $old_post['use_password2']
+        ]
     ];
 }
-else $data = [ 0 => [ "use_voornaam" => "", "use_naam" => "", "use_email" => "", "use_password" => "" ]];
+else $data = [ 0 => [ "use_voornaam" => "", "use_naam" => "", "use_email" => "", "use_password" => "", "use_password2" => "" ]];
 
 //get template
 $html .= file_get_contents("templates/register.html");

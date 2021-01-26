@@ -38,6 +38,15 @@ function SaveFormData()
                 ValidateUsrPassword( $_POST['use_password'] );
                 ValidateUsrEmail( $_POST['use_email'] );
                 CheckUniqueUsrEmail( $_POST['use_email'] );
+                if ($_POST['use_password'] !== $_POST['use_password2']) {
+                    $_SESSION['errors']['use_password2_error'] = "Gelieve 2x hetzelfde wachtwoord in te geven.";
+                }
+                if (strlen($_POST['use_voornaam']) === 0) {
+                    $_SESSION['errors']['use_voornaam_error'] = "Gelieve uw voornaam in te vullen.";
+                }
+                if (strlen($_POST['use_naam']) === 0) {
+                    $_SESSION['errors']['use_naam_error'] = "Gelieve uw achternaam in te vullen.";
+                }
         }
 
         //terugkeren naar afzender als er een fout is
@@ -60,7 +69,7 @@ function SaveFormData()
         foreach ( $_POST as $field => $value )
         {
             //skip non-data fields
-            if ( in_array( $field, [ 'table', 'pkey', 'afterinsert', 'afterupdate', 'csrf' ] ) ) continue;
+            if ( in_array( $field, [ 'table', 'pkey', 'afterinsert', 'afterupdate', 'csrf', 'use_password2' ] ) ) continue;
 
             //handle primary key field
             if ( $field == $pkey )
