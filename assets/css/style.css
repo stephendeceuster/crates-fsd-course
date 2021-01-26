@@ -333,6 +333,10 @@ form.main-search button.btn-search:hover {
   background-color: #256B71;
 }
 
+form#sort div.custom-select {
+  margin-bottom: 1rem;
+}
+
 div.search-results {
   display: flex;
   flex-wrap: wrap;

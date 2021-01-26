@@ -200,6 +200,11 @@ form.main-search {
   }
 }
 
+// sorting
+form#sort div.custom-select {
+  margin-bottom: 1rem;
+}
+
 // search results
 div.search-results {
   display: flex;
