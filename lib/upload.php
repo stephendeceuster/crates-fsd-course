@@ -48,12 +48,12 @@ if ( $_SERVER['REQUEST_METHOD'] == "POST" ) {
     $art_id = $data[0]['art_id'];
   }
 
-  // get data from rest of form
+  // get form data
   $albumnaam = htmlspecialchars(ucwords(strtolower($_POST['alb_naam'])),  ENT_QUOTES);
   $albumyear = $_POST['alb_releaseyear'];
   $albumgenre = $_POST['alb_gen_id'];
 
-  // CHECK IF ARTIST ID ALREADY HAS THIS ALBUM IN DATABASE!!
+  // Check form data
   $checkAlbum = getData("SELECT * FROM album WHERE alb_naam='" . $albumnaam . "' AND alb_art_id=" . $art_id);
 
   if (count($checkAlbum) > 0) {

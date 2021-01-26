@@ -93,6 +93,10 @@ button {
   -webkit-appearance: none;
   -moz-appearance: none;
   cursor: pointer;
+  transition: all 400ms ease;
+  &:hover {
+    background-color: $clr2;
+  }
 }
 
 input.fileupload {
@@ -292,7 +296,7 @@ main.album-page {
 /* The container must be positioned relative: */
 .custom-select {
   position: relative;
-  margin-bottom: 1rem;
+  margin-bottom: 2.5rem;
 }
 
 .custom-select select {
@@ -307,8 +311,8 @@ main.album-page {
 .select-selected:after {
   position: absolute;
   content: "";
-  top: 18px;
-  right: 10px;
+  top: 22px;
+  right: 18px;
   width: 0;
   height: 0;
   border: 6px solid transparent;
@@ -325,12 +329,12 @@ main.album-page {
 .select-items div,
 .select-selected {
   color: #ffffff;
-  padding: 13px 16px;
+  padding: 14px 16px;
   border: 1px solid $clr1;
   border-radius: 2px;
   border-color: transparent transparent $clr1 transparent;
   cursor: pointer;
-  height: 42px;
+  height: 48px;
 }
 
 /* Style items (options): */
@@ -453,6 +457,8 @@ div.message {
         font-weight: 400;
         font-style: italic;
         font-size: 1.25rem;
+        text-align: center;
+        width: 45%;
       }
       .delete-from {
         width: 100%;
