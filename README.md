@@ -1,4 +1,4 @@
 # Crates
 Records Collection Tool
 
-https://wdev.be/stephen21/crates/
+https://wdev2.be/stephen21/crates/
